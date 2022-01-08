@@ -16,8 +16,6 @@ import com.google.firebase.database.ValueEventListener;
 
 public class DinhDanhActivity extends AppCompatActivity {
 
-    public static final String MA_NHAN_VIEN = "srgwegge";
-    public static final String MA_QUAN_LY = "srgwegge";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

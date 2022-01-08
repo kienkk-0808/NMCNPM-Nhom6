@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_danh_sach_ban_an"
+        android:title="@string/danh_sach_ban_an"
+        android:icon="@drawable/ic_baseline_list_24"/>
+
+    <item
+        android:id="@+id/nav_goi_mon_mang_ve"
+        android:title="@string/goi_mon_mang_ve"
+        android:icon="@drawable/ic_baseline_goi_mon_24"/>
+
+    <item
+        android:id="@+id/nav_quan_ly_hoi_vien"
+        android:title="@string/quan_ly_hoi_vien"
+        android:icon="@drawable/ic_baseline_hoi_vien_24"/>
+
+</menu>

@@ -2,4 +2,9 @@
     <string name="app_name">Nhà hàng ẩm thực</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="danh_sach_ban_an">Danh sách bàn ăn</string>
+    <string name="goi_mon_mang_ve">Gọi món mang về</string>
+    <string name="quan_ly_hoi_vien">Quản lý hội viên</string>
+    <string name="nav_open">Open Nav</string>
+    <string name="nav_close">Close Nav</string>
 </resources>

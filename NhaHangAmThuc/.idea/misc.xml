@@ -3,6 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Git for NMCNPM/NhaHangAmThuc/app/src/main/res/layout/activity_nhan_vien.xml" value="0.25" />
+        <entry key="..\:/Git for NMCNPM/NhaHangAmThuc/app/src/main/res/layout/fragment_ban_an.xml" value="0.25" />
+        <entry key="..\:/Git for NMCNPM/NhaHangAmThuc/app/src/main/res/layout/fragment_goi_mon.xml" value="0.25" />
+        <entry key="..\:/Git for NMCNPM/NhaHangAmThuc/app/src/main/res/layout/fragment_goi_mon_mang_ve.xml" value="0.25" />
+        <entry key="..\:/Git for NMCNPM/NhaHangAmThuc/app/src/main/res/layout/fragment_hoi_vien.xml" value="0.25" />
+        <entry key="..\:/Git for NMCNPM/NhaHangAmThuc/app/src/main/res/layout/layout_header_nav.xml" value="0.25" />
+        <entry key="..\:/Git for NMCNPM/NhaHangAmThuc/app/src/main/res/menu/menu_nav.xml" value="0.25" />
         <entry key="..\:/Users/gplma/AndroidStudioProjects/NhaHangAmThuc/app/src/main/res/layout/activity_dinh_danh.xml" value="0.25" />
         <entry key="..\:/Users/gplma/AndroidStudioProjects/NhaHangAmThuc/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/gplma/AndroidStudioProjects/NhaHangAmThuc/app/src/main/res/layout/activity_nhan_vien.xml" value="0.25" />
