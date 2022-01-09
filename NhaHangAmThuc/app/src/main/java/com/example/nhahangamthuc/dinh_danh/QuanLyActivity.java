@@ -9,11 +9,13 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.example.nhahangamthuc.R;
 import com.example.nhahangamthuc.ban_an.BanAnFragment;
+import com.example.nhahangamthuc.do_choi.DoChoiFragment;
 import com.example.nhahangamthuc.mon_an.MonAnFragment;
 import com.example.nhahangamthuc.su_kien.SuKienFragment;
 import com.example.nhahangamthuc.fragment.ThongKeFragment;
@@ -98,7 +100,7 @@ public class QuanLyActivity extends AppCompatActivity implements NavigationView.
                 break;
             case R.id.nav_do_choi:
                 if (currentFragment != FRAGMENT_5) {
-                    replaceFragment(new BanAnFragment());
+                    replaceFragment(new DoChoiFragment());
                     currentFragment = FRAGMENT_5;
                     navigationView.getMenu().findItem(R.id.nav_thong_ke).setChecked(false);
                     navigationView.getMenu().findItem(R.id.nav_mon_an).setChecked(false);

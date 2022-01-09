@@ -37,15 +37,6 @@
             android:gravity="center"
             android:id="@+id/button_quan_ly"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/tvt_test"
-            android:text="dsregserheeg"
-            android:gravity="center"
-            android:textSize="20sp"
-            android:textStyle="bold"/>
-
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

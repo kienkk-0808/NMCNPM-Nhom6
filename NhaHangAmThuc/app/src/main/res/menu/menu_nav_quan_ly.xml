@@ -19,7 +19,7 @@
     <item
         android:id="@+id/nav_su_kien"
         android:title="@string/su_kien"
-        android:icon="@drawable/ic_sukien"/>
+        android:icon="@drawable/ic_su_kien"/>
 
     <item
         android:id="@+id/nav_do_choi"

@@ -3,14 +3,21 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Git for NMCNPM/NhaHangAmThuc/app/src/main/res/drawable/bg_white_cornor_16.xml" value="0.26614583333333336" />
+        <entry key="..\:/Git for NMCNPM/NhaHangAmThuc/app/src/main/res/drawable/bg_yeallow_cornor_16_top.xml" value="0.26614583333333336" />
+        <entry key="..\:/Git for NMCNPM/NhaHangAmThuc/app/src/main/res/drawable/ic_sukien.xml" value="0.26614583333333336" />
+        <entry key="..\:/Git for NMCNPM/NhaHangAmThuc/app/src/main/res/layout/activity_dinh_danh.xml" value="0.12708333333333333" />
         <entry key="..\:/Git for NMCNPM/NhaHangAmThuc/app/src/main/res/layout/activity_nhan_vien.xml" value="0.25" />
         <entry key="..\:/Git for NMCNPM/NhaHangAmThuc/app/src/main/res/layout/activity_quan_ly.xml" value="0.25" />
         <entry key="..\:/Git for NMCNPM/NhaHangAmThuc/app/src/main/res/layout/fragment_ban_an.xml" value="0.25" />
+        <entry key="..\:/Git for NMCNPM/NhaHangAmThuc/app/src/main/res/layout/fragment_do_choi.xml" value="0.25" />
         <entry key="..\:/Git for NMCNPM/NhaHangAmThuc/app/src/main/res/layout/fragment_goi_mon.xml" value="0.25" />
         <entry key="..\:/Git for NMCNPM/NhaHangAmThuc/app/src/main/res/layout/fragment_goi_mon_mang_ve.xml" value="0.25" />
         <entry key="..\:/Git for NMCNPM/NhaHangAmThuc/app/src/main/res/layout/fragment_hoi_vien.xml" value="0.25" />
         <entry key="..\:/Git for NMCNPM/NhaHangAmThuc/app/src/main/res/layout/fragment_thong_ke.xml" value="0.25" />
+        <entry key="..\:/Git for NMCNPM/NhaHangAmThuc/app/src/main/res/layout/item_do_choi.xml" value="0.2359375" />
         <entry key="..\:/Git for NMCNPM/NhaHangAmThuc/app/src/main/res/layout/layout_header_nav.xml" value="0.25" />
+        <entry key="..\:/Git for NMCNPM/NhaHangAmThuc/app/src/main/res/layout/popup_dialog.xml" value="0.2359375" />
         <entry key="..\:/Git for NMCNPM/NhaHangAmThuc/app/src/main/res/menu/menu_nav.xml" value="0.25" />
         <entry key="..\:/Git for NMCNPM/NhaHangAmThuc/app/src/main/res/menu/menu_nav_quan_ly.xml" value="0.25" />
         <entry key="..\:/Users/gplma/AndroidStudioProjects/NhaHangAmThuc/app/src/main/res/layout/activity_dinh_danh.xml" value="0.25" />

@@ -31,21 +31,5 @@ public class DinhDanhActivity extends AppCompatActivity {
         findViewById(R.id.button_quan_ly).setOnClickListener(v -> {
             startActivity(new Intent(this, QuanLyActivity.class));
         });
-
-        TextView textView = findViewById(R.id.tvt_test);
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference reference = database.getReference("user");
-        reference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                User user = snapshot.getValue(User.class);
-                textView.setText(user.toString());
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
     }
 }
