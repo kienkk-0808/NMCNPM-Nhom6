@@ -1,13 +1,14 @@
-package com.example.nhahangamthuc;
+package com.example.nhahangamthuc.dinh_danh;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.TextView;
 
+import com.example.nhahangamthuc.R;
+import com.example.nhahangamthuc.User;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;

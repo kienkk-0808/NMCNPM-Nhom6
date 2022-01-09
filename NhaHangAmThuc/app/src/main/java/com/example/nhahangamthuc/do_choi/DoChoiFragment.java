@@ -1,4 +1,4 @@
-package com.example.nhahangamthuc.fragment;
+package com.example.nhahangamthuc.do_choi;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

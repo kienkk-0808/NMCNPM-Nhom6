@@ -1,4 +1,4 @@
-package com.example.nhahangamthuc.fragment;
+package com.example.nhahangamthuc.hoi_vien;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,14 +11,14 @@ import androidx.fragment.app.Fragment;
 
 import com.example.nhahangamthuc.R;
 
-public class BanAnFragment extends Fragment {
+public class HoiVienFragment extends Fragment {
 
-    public BanAnFragment() {
+    public HoiVienFragment() {
         // Required empty public constructor
     }
 
-    public static BanAnFragment newInstance() {
-        BanAnFragment fragment = new BanAnFragment();
+    public static HoiVienFragment newInstance() {
+        HoiVienFragment fragment = new HoiVienFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -32,7 +32,7 @@ public class BanAnFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_ban_an, container, false);
+        View view = inflater.inflate(R.layout.fragment_hoi_vien, container, false);
         return view;
     }
 

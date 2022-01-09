@@ -1,4 +1,4 @@
-package com.example.nhahangamthuc.fragment;
+package com.example.nhahangamthuc.ban_an;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,14 +11,14 @@ import androidx.fragment.app.Fragment;
 
 import com.example.nhahangamthuc.R;
 
-public class SuKienFragment extends Fragment {
+public class BanAnFragment extends Fragment {
 
-    public SuKienFragment() {
+    public BanAnFragment() {
         // Required empty public constructor
     }
 
-    public static SuKienFragment newInstance() {
-        SuKienFragment fragment = new SuKienFragment();
+    public static BanAnFragment newInstance() {
+        BanAnFragment fragment = new BanAnFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -32,7 +32,7 @@ public class SuKienFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_su_kien, container, false);
+        View view = inflater.inflate(R.layout.fragment_ban_an, container, false);
         return view;
     }
 

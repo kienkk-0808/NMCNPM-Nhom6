@@ -1,4 +1,4 @@
-package com.example.nhahangamthuc;
+package com.example.nhahangamthuc.dinh_danh;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -8,18 +8,15 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 
+import com.example.nhahangamthuc.R;
 import com.example.nhahangamthuc.fragment.DanhSachBanAnFragment;
 import com.example.nhahangamthuc.fragment.GoiMonMangVeFragment;
-import com.example.nhahangamthuc.fragment.HoiVienFragment;
+import com.example.nhahangamthuc.hoi_vien.HoiVienFragment;
 import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.tabs.TabLayout;
-import com.google.android.material.tabs.TabLayoutMediator;
 
 public class NhanVienActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 

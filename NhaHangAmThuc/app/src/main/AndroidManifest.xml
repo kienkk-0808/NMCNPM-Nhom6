@@ -10,10 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NhaHangAmThuc">
         <activity
-            android:name=".NhanVienActivity"
+            android:name=".dinh_danh.NhanVienActivity"
             android:exported="false" />
         <activity
-            android:name=".DinhDanhActivity"
+            android:name=".dinh_danh.DinhDanhActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".QuanLyActivity"
+            android:name=".dinh_danh.QuanLyActivity"
             android:exported="true" />
     </application>
 

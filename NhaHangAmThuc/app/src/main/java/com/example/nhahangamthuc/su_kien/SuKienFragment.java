@@ -1,4 +1,4 @@
-package com.example.nhahangamthuc.fragment;
+package com.example.nhahangamthuc.su_kien;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,14 +11,14 @@ import androidx.fragment.app.Fragment;
 
 import com.example.nhahangamthuc.R;
 
-public class HoiVienFragment extends Fragment {
+public class SuKienFragment extends Fragment {
 
-    public HoiVienFragment() {
+    public SuKienFragment() {
         // Required empty public constructor
     }
 
-    public static HoiVienFragment newInstance() {
-        HoiVienFragment fragment = new HoiVienFragment();
+    public static SuKienFragment newInstance() {
+        SuKienFragment fragment = new SuKienFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -32,7 +32,7 @@ public class HoiVienFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_hoi_vien, container, false);
+        View view = inflater.inflate(R.layout.fragment_su_kien, container, false);
         return view;
     }
 

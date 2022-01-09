@@ -5,6 +5,11 @@
     <string name="danh_sach_ban_an">Danh sách bàn ăn</string>
     <string name="goi_mon_mang_ve">Gọi món mang về</string>
     <string name="quan_ly_hoi_vien">Quản lý hội viên</string>
+    <string name="mon_an">Món ăn</string>
+    <string name="ban_an">Bàn ăn</string>
+    <string name="do_choi">Đồ chơi</string>
+    <string name="su_kien">Sự kiện</string>
+    <string name="thong_ke">Thống kê</string>
     <string name="nav_open">Open Nav</string>
     <string name="nav_close">Close Nav</string>
 </resources>
