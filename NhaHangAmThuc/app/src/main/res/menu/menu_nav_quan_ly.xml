@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_thong_ke"
+        android:title="@string/thong_ke"
+        android:icon="@drawable/ic_thongke"/>
+
+    <item
+        android:id="@+id/nav_mon_an"
+        android:title="@string/mon_an"
+        android:icon="@drawable/ic_food"/>
+
+    <item
+        android:id="@+id/nav_ban_an"
+        android:title="@string/ban_an"
+        android:icon="@drawable/ic_ban_an"/>
+
+    <item
+        android:id="@+id/nav_su_kien"
+        android:title="@string/su_kien"
+        android:icon="@drawable/ic_sukien"/>
+
+    <item
+        android:id="@+id/nav_do_choi"
+        android:title="@string/do_choi"
+        android:icon="@drawable/ic_baseline_toys_24"/>
+
+</menu>
