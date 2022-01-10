@@ -10,7 +10,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NhaHangAmThuc">
         <activity
+            android:name=".mon_an.AddMonAn"
+            android:exported="false"
+            android:label="Thêm món ăn"/>
+        <activity
             android:name=".dinh_danh.NhanVienActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ban_an.DatBanController"
+            android:exported="false" />
+        <activity
+            android:name=".ban_an.ChiTietBan"
             android:exported="false" />
         <activity
             android:name=".dinh_danh.DinhDanhActivity"
