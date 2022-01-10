@@ -37,6 +37,7 @@
 
             <EditText
                 android:layout_width="0dp"
+                android:id="@+id/edt_ten_do_choi"
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
                 android:hint="Nhập tên đồ chơi"
@@ -59,6 +60,7 @@
 
             <EditText
                 android:layout_width="0dp"
+                android:id="@+id/edt_so_luong"
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
                 android:hint="Nhập số lượng"
@@ -77,11 +79,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
+                android:id="@+id/btn_huy"
                 android:layout_marginEnd="5dp"
                 android:text="Hủy"/>
 
             <Button
                 android:layout_width="wrap_content"
+                android:id="@+id/btn_them"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:layout_weight="2"

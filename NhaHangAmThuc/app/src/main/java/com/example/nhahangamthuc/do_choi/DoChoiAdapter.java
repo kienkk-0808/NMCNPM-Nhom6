@@ -16,9 +16,16 @@ import java.util.List;
 public class DoChoiAdapter extends RecyclerView.Adapter<DoChoiAdapter.DoChoiViewHolder>{
 
     private List<DoChoi> doChoiList;
+    private IItemClick iItemClick;
 
-    public DoChoiAdapter(List<DoChoi> doChoiList) {
+    public interface IItemClick {
+        void onUpdateClick(DoChoi doChoi);
+        void onDeleteClick(DoChoi doChoi);
+    }
+
+    public DoChoiAdapter(List<DoChoi> doChoiList, IItemClick iItemClick) {
         this.doChoiList = doChoiList;
+        this.iItemClick = iItemClick;
     }
 
     @NonNull
@@ -34,6 +41,12 @@ public class DoChoiAdapter extends RecyclerView.Adapter<DoChoiAdapter.DoChoiView
         if (doChoi == null) return;
         holder.textViewTen.setText(doChoi.getTen());
         holder.textViewSoLuong.setText("Số lượng: " + doChoi.getSoLuong());
+        holder.imageButtonSua.setOnClickListener(v -> {
+           iItemClick.onUpdateClick(doChoi);
+        });
+        holder.imageButtonXoa.setOnClickListener(v -> {
+            iItemClick.onDeleteClick(doChoi);
+        });
     }
 
     @Override

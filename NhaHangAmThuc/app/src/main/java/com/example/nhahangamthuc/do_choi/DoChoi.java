@@ -1,5 +1,8 @@
 package com.example.nhahangamthuc.do_choi;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class DoChoi {
 
     private int id;
@@ -46,5 +49,13 @@ public class DoChoi {
                 ", soLuong=" + soLuong +
                 ", ten='" + ten + '\'' +
                 '}';
+    }
+
+    public Map<String, Object> toMap() {
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("id", id);
+        map.put("ten", ten);
+        map.put("soLuong", soLuong);
+        return map;
     }
 }
