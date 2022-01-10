@@ -13,6 +13,12 @@
             android:name=".dinh_danh.NhanVienActivity"
             android:exported="false" />
         <activity
+            android:name=".ban_an.DatBanController"
+            android:exported="false" />
+        <activity
+            android:name=".ban_an.ChiTietBan"
+            android:exported="false" />
+        <activity
             android:name=".dinh_danh.DinhDanhActivity"
             android:exported="true">
             <intent-filter>
