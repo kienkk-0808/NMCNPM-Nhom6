@@ -16,6 +16,7 @@
         <entry key="..\:/Learn/20211/CNPM/Project/NMCNPM-Nhom6/NhaHangAmThuc/app/src/main/res/layout/item_ban.xml" value="0.1" />
         <entry key="..\:/Learn/20211/CNPM/Project/NMCNPM-Nhom6/NhaHangAmThuc/app/src/main/res/menu/menu_nav_nhan_vien.xml" value="0.3333333333333333" />
         <entry key="..\:/Learn/20211/CNPM/Project/NMCNPM-Nhom6/NhaHangAmThuc/app/src/main/res/menu/menu_nav_quan_ly.xml" value="0.22" />
+<<<<<<< HEAD
         <entry key="..\:/New folder (2)/NMCNPM-Nhom6/NhaHangAmThuc/app/src/main/res/drawable/ic_back_white.xml" value="0.17552083333333332" />
         <entry key="..\:/New folder (2)/NMCNPM-Nhom6/NhaHangAmThuc/app/src/main/res/drawable/shape_toolbar01.xml" value="0.17552083333333332" />
         <entry key="..\:/New folder (2)/NMCNPM-Nhom6/NhaHangAmThuc/app/src/main/res/drawable/shape_toolbar02.xml" value="0.17552083333333332" />
@@ -28,6 +29,8 @@
         <entry key="..\:/New folder (3)/NMCNPM-Nhom6/NhaHangAmThuc/app/src/main/res/layout/fragment_add_mon_an.xml" value="0.1" />
         <entry key="..\:/New folder (3)/NMCNPM-Nhom6/NhaHangAmThuc/app/src/main/res/layout/fragment_mon_an.xml" value="0.1" />
         <entry key="..\:/New folder (3)/NMCNPM-Nhom6/NhaHangAmThuc/app/src/main/res/layout/item_monan.xml" value="0.1" />
+=======
+>>>>>>> dd2fd4bd1899f2c98fe5135e5077a5daa47a0e7b
         <entry key="..\:/Users/gplma/AndroidStudioProjects/NhaHangAmThuc/app/src/main/res/layout/activity_dinh_danh.xml" value="0.25" />
         <entry key="..\:/Users/gplma/AndroidStudioProjects/NhaHangAmThuc/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/gplma/AndroidStudioProjects/NhaHangAmThuc/app/src/main/res/layout/activity_nhan_vien.xml" value="0.25" />

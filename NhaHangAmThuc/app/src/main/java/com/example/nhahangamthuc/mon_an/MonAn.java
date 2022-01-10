@@ -2,11 +2,11 @@ package com.example.nhahangamthuc.mon_an;
 
 public class MonAn {
     private Long id;
-    private String tenmonan,kieumonan,url;
+    private String tenmonan, kieumonan, url;
     private int soLuong;
     private Long giatien;
 
-    public MonAn(){
+    public MonAn() {
     }
 
     public MonAn(Long id, String tenmonan, String kieumonan, String url, Long giatien) {
@@ -29,8 +29,8 @@ public class MonAn {
         return tenmonan;
     }
 
-    public void setTenmonan(String tenonan) {
-        this.tenmonan = tenonan;
+    public void setTenmonan(String tenmonan) {
+        this.tenmonan = tenmonan;
     }
 
     public String getKieumonan() {
