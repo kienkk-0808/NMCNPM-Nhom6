@@ -2,9 +2,20 @@ package com.example.nhahangamthuc.mon_an;
 
 public class MonAn {
     private Long id;
-    private String ten;
+    private String tenmonan, kieumonan, url;
     private int soLuong;
-    private Long gia;
+    private Long giatien;
+
+    public MonAn() {
+    }
+
+    public MonAn(Long id, String tenmonan, String kieumonan, String url, Long giatien) {
+        this.id = id;
+        this.tenmonan = tenmonan;
+        this.kieumonan = kieumonan;
+        this.url = url;
+        this.giatien = giatien;
+    }
 
     public Long getId() {
         return id;
@@ -14,12 +25,28 @@ public class MonAn {
         this.id = id;
     }
 
-    public String getTen() {
-        return ten;
+    public String getTenmonan() {
+        return tenmonan;
     }
 
-    public void setTen(String ten) {
-        this.ten = ten;
+    public void setTenmonan(String tenmonan) {
+        this.tenmonan = tenmonan;
+    }
+
+    public String getKieumonan() {
+        return kieumonan;
+    }
+
+    public void setKieumonan(String kieumonan) {
+        this.kieumonan = kieumonan;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public int getSoLuong() {
@@ -30,11 +57,11 @@ public class MonAn {
         this.soLuong = soLuong;
     }
 
-    public Long getGia() {
-        return gia;
+    public Long getGiatien() {
+        return giatien;
     }
 
-    public void setGia(Long gia) {
-        this.gia = gia;
+    public void setGiatien(Long giatien) {
+        this.giatien = giatien;
     }
 }
