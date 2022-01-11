@@ -1,5 +1,8 @@
 package com.example.nhahangamthuc.mon_an;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class MonAn {
     private Long id;
     private String tenmonan, kieumonan, url;
@@ -9,40 +12,36 @@ public class MonAn {
     public MonAn() {
     }
 
-    public MonAn(Long id, String tenmonan, String kieumonan, String url, Long giatien) {
-        this.id = id;
-        this.tenmonan = tenmonan;
-        this.kieumonan = kieumonan;
-        this.url = url;
-        this.giatien = giatien;
-    }
-
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getTenmonan() {
         return tenmonan;
     }
 
-    public void setTenmonan(String tenmonan) {
-        this.tenmonan = tenmonan;
-    }
-
     public String getKieumonan() {
         return kieumonan;
     }
 
-    public void setKieumonan(String kieumonan) {
-        this.kieumonan = kieumonan;
-    }
-
     public String getUrl() {
         return url;
+    }
+
+    public Long getGiatien() {
+        return giatien;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setTenmonan(String tenmonan) {
+        this.tenmonan = tenmonan;
+    }
+
+    public void setKieumonan(String kieumonan) {
+        this.kieumonan = kieumonan;
     }
 
     public void setUrl(String url) {
@@ -57,11 +56,17 @@ public class MonAn {
         this.soLuong = soLuong;
     }
 
-    public Long getGiatien() {
-        return giatien;
-    }
-
     public void setGiatien(Long giatien) {
         this.giatien = giatien;
+    }
+
+    public Map<String, Object> toMap() {
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("id", id);
+        map.put("tenmonan", tenmonan);
+        map.put("kieumonan", kieumonan);
+        map.put("giatien", giatien);
+        map.put("url", url);
+        return map;
     }
 }

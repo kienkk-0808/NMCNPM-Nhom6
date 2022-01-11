@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="wrap_content"
@@ -13,8 +15,8 @@
         android:gravity="center"
         android:textSize="16sp"
         android:textStyle="bold"
-        android:background="@drawable/bg_yeallow_cornor_16_top"
-        android:text="Thêm đồ chơi"/>
+        android:background="@drawable/shape_toolbar01"
+        android:text="Sửa thông tin món ăn"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -26,22 +28,25 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:weightSum="4">
+            android:weightSum="4"
+            android:padding="5dp">
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textSize="14sp"
-                android:text="Tên đồ chơi:"/>
+                android:text="Tên món ăn:"/>
 
             <EditText
+                android:id="@+id/edt_ten_mon_an"
                 android:layout_width="0dp"
-                android:id="@+id/edt_ten_do_choi"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
                 android:layout_weight="3"
-                android:hint="Nhập tên đồ chơi"
-                android:layout_marginLeft="5dp"/>
+                android:background="@drawable/shape_edittext01"
+                android:hint="Nhập tên món ăn"
+                tools:ignore="TouchTargetSizeCheck" />
 
         </LinearLayout>
 
@@ -49,23 +54,26 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:weightSum="4">
+            android:weightSum="4"
+            android:padding="5dp">
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Số lượng:"
+                android:text="Kiểu món ăn:"
                 android:textSize="14sp" />
 
-            <EditText
-                android:id="@+id/edt_so_luong"
+            <TextView
+                android:id="@+id/edt_kieu_mon_an"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:layout_weight="3"
-                android:hint="Nhập số lượng"
-                android:inputType="number" />
+                android:textSize="18sp"
+                android:background="@drawable/shape_edittext01"
+                app:drawableEndCompat="@drawable/ic_down_gray"
+                android:hint="Chọn kiểu món ăn"/>
 
         </LinearLayout>
 
@@ -73,7 +81,35 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:weightSum="4">
+            android:weightSum="4"
+            android:padding="5dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Giá tiền:"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/edt_gia_tien"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="3"
+                android:background="@drawable/shape_edittext01"
+                android:hint="Nhập giá tiền"
+                android:inputType="number"
+                tools:ignore="TouchTargetSizeCheck" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="4"
+            android:padding="5dp">
 
             <Button
                 android:layout_width="wrap_content"
@@ -85,11 +121,11 @@
 
             <Button
                 android:layout_width="wrap_content"
-                android:id="@+id/btn_them"
+                android:id="@+id/btn_sua"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:layout_weight="2"
-                android:text="Thêm"/>
+                android:text="Sửa"/>
 
         </LinearLayout>
 

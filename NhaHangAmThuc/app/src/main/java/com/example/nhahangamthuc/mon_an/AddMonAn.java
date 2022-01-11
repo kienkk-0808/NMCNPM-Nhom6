@@ -4,12 +4,14 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -38,11 +40,13 @@ public class AddMonAn extends AppCompatActivity {
     TextView kieumonan;
     Button add;
     ImageView hinhanh_input;
-    ImageButton imageButton;
+    ImageButton imageButton, imageButtonback;
 
     int REQUEST_CODE_CAMERA = 123;
 
-    private Uri uri;
+    private ProgressDialog progressDialog;
+
+    private Uri uri = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +59,20 @@ public class AddMonAn extends AppCompatActivity {
         add = findViewById(R.id.add_button);
         hinhanh_input = findViewById(R.id.hinhanh_input);
         imageButton = findViewById(R.id.imageButton1);
+        imageButtonback = findViewById(R.id.imageButtonback);
 
+        progressDialog = new ProgressDialog(AddMonAn.this);
+        progressDialog.setTitle("Please wait");
+        progressDialog.setCanceledOnTouchOutside(false);
+
+        imageButtonback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
+        // Thêm dữ liệu vào database
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,6 +80,7 @@ public class AddMonAn extends AppCompatActivity {
             }
         });
 
+        // Chọn kiểu món ăn
         kieumonan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,6 +104,7 @@ public class AddMonAn extends AppCompatActivity {
             }
         });
 
+        //Lấy hình ảnh từ thư viện
         imageButton.setOnClickListener (new View.OnClickListener () {
             @Override
             public void onClick(View view) {
@@ -96,7 +115,37 @@ public class AddMonAn extends AppCompatActivity {
         });
     }
 
+    private String ten_mon_an = "", kieu_mon_an = "", gia_tien = "";
+
     private void OnClickAddMonAn() {
+        //Step 1: Validate data
+
+        ten_mon_an = tenmonan.getText().toString().trim();
+        kieu_mon_an = kieumonan.getText().toString().trim();
+        gia_tien = giatien.getText().toString().trim();
+
+        if(TextUtils.isEmpty(ten_mon_an)){
+            Toast.makeText(this,"Nhập tên món ăn...", Toast.LENGTH_SHORT).show();
+        }
+        else if(TextUtils.isEmpty(kieu_mon_an)){
+            Toast.makeText(this,"Chọn kiểu món ăn...", Toast.LENGTH_SHORT).show();
+        }
+        else if(TextUtils.isEmpty(gia_tien)){
+            Toast.makeText(this,"Nhập giá tiền...", Toast.LENGTH_SHORT).show();
+        }
+        else if(uri == null){
+            Toast.makeText(this,"Chọn hình ảnh...", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            uploadimagetoStorage();
+        }
+    }
+
+    private void uploadimagetoStorage() {
+        //Step 2: Đẩy hình ảnh lên database
+        progressDialog.setMessage("Đang tải hình ảnh lên...");
+        progressDialog.show();
+
         Long timestamp =  System.currentTimeMillis();
         String filePathAndName = "Food/" + timestamp;
 
@@ -115,17 +164,20 @@ public class AddMonAn extends AppCompatActivity {
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(AddMonAn.this,"PDF upload failed due to "+e.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AddMonAn.this,"Image upload failed due to "+e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
     }
 
     private void uploadInfotoDb(String uploadedUrl, Long timestamp) {
+        progressDialog.setMessage("Đang tải thông tin lên...");
+        progressDialog.show();
+
         HashMap<String, Object> hashMap = new HashMap<> ();
         hashMap.put("id" , timestamp);
-        hashMap.put("tenmonan", tenmonan.getText().toString().trim());
-        hashMap.put("kieumonan", kieumonan.getText().toString().trim());
-        hashMap.put("giatien", Long.valueOf(giatien.getText().toString().trim()));
+        hashMap.put("tenmonan", ten_mon_an);
+        hashMap.put("kieumonan", kieu_mon_an);
+        hashMap.put("giatien", Long.valueOf(gia_tien));
         hashMap.put("url", uploadedUrl);
 
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Danh_sach_mon_an");
@@ -134,12 +186,14 @@ public class AddMonAn extends AppCompatActivity {
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
+                        progressDialog.dismiss();
                         Toast.makeText(AddMonAn.this,"Successfully uploaded...", Toast.LENGTH_SHORT).show();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
+                        progressDialog.dismiss();
                         Toast.makeText(AddMonAn.this,"Failed to upload to db due to" + e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
@@ -156,6 +210,9 @@ public class AddMonAn extends AppCompatActivity {
             } catch (FileNotFoundException e){
                 e.printStackTrace();
             }
+        }
+        else{
+            Toast.makeText(this,"Cancellled picking image",Toast.LENGTH_SHORT).show();
         }
         super.onActivityResult(requestCode, resultCode, data);
     }

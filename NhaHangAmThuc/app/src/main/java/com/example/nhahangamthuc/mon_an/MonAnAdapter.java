@@ -1,18 +1,38 @@
 package com.example.nhahangamthuc.mon_an;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.nhahangamthuc.R;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 
@@ -20,9 +40,17 @@ public class MonAnAdapter extends RecyclerView.Adapter<MonAnAdapter.MyViewHolder
     private Context context;
     private ArrayList<MonAn> mListMonAn;
 
-    public MonAnAdapter(Context contex, ArrayList<MonAn> mListMonAn){
+    private static final String TAG = "MonAn_ADAPTER_TAG";
+
+    private ProgressDialog progressDialog;
+
+    public MonAnAdapter(Context context, ArrayList<MonAn> mListMonAn){
         this.context = context;
         this.mListMonAn = mListMonAn;
+
+        progressDialog = new ProgressDialog(context);
+        progressDialog.setTitle("Please wait");
+        progressDialog.setCanceledOnTouchOutside(false);
     }
 
     @NonNull
@@ -43,25 +71,130 @@ public class MonAnAdapter extends RecyclerView.Adapter<MonAnAdapter.MyViewHolder
         holder.kieumonan_txt.setText(kieumon);
         holder.giatien_txt.setText(String.valueOf(giatien));
 
-        /*String url = monAn.getUrl();
-
-        StorageReference ref = FirebaseStorage.getInstance().getReferenceFromUrl(url);
-        ref.getBytes(20000000)
-                .addOnSuccessListener(new OnSuccessListener<byte[]>() {
-                    @Override
-                    public void onSuccess(byte[] bytes) {
-                        Bitmap bitmap = BitmapFactory.decodeByteArray(bytes,0,bytes.length);
-                        holder.hinhanh.setImageBitmap(bitmap);
-                    }
-                });*/
         Glide.with(holder.hinhanh.getContext()).load(monAn.getUrl()).into(holder.hinhanh);
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        holder.moreBtn.setOnClickListener(v -> moreOptionsDialog(monAn, holder));
+    }
 
-            }
+    private void moreOptionsDialog(MonAn monAn, MyViewHolder holder) {
+        String[] options = {"Edit", "Delete"};
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle("Choose Options")
+                .setItems(options, (dialog, which) -> {
+                    if (which == 0){
+                        editMonAn(monAn,holder);
+                    }
+                    else if(which == 1){
+                        new AlertDialog.Builder(context).setTitle("Xóa món ăn")
+                                .setMessage("Bạn có chắc chắn muốn xóa món ăn này không?")
+                                .setPositiveButton("Xóa", (dialog1, which1) -> deleteMonAn(monAn, holder))
+                                .setNegativeButton("Hủy", null).show();
+                    }
+                })
+                .show();
+    }
+
+    private void editMonAn(MonAn monAn, MyViewHolder holder) {
+        final Dialog dialog2 = new Dialog(context);
+        dialog2.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog2.setContentView(R.layout.popup_dialog_monan);
+        Window window = dialog2.getWindow();
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        WindowManager.LayoutParams layoutParams = window.getAttributes();
+        layoutParams.gravity = Gravity.CENTER;
+        window.setAttributes(layoutParams);
+        dialog2.setCancelable(true);
+
+        EditText editTextTen = dialog2.findViewById(R.id.edt_ten_mon_an);
+        editTextTen.setText(monAn.getTenmonan());
+
+        TextView textViewKieu = dialog2.findViewById(R.id.edt_kieu_mon_an);
+        textViewKieu.setText(monAn.getKieumonan());
+        textViewKieu.setOnClickListener(v -> {
+            String[] kieumonanArray = new String[5];
+            kieumonanArray[0] = "Khai vị";
+            kieumonanArray[1] = "Món chính";
+            kieumonanArray[2] = "Món phụ ăn kèm";
+            kieumonanArray[3] = "Món tráng miệng";
+            kieumonanArray[4] = "Đồ uống";
+
+            androidx.appcompat.app.AlertDialog.Builder builder1 = new androidx.appcompat.app.AlertDialog.Builder(v.getContext());
+            builder1.setTitle("Chọn kiểu món ăn")
+                    .setItems(kieumonanArray, (dialog12, which12) -> {
+                        String tenkieumonan = kieumonanArray[which12];
+                        textViewKieu.setText(tenkieumonan);
+                    })
+                    .show();
         });
+
+        EditText editTextGia = dialog2.findViewById(R.id.edt_gia_tien);
+        editTextGia.setText(String.valueOf(monAn.getGiatien()));
+        dialog2.show();
+
+        dialog2.findViewById(R.id.btn_sua).setOnClickListener(v -> {
+            monAn.setTenmonan((editTextTen.getText().toString()));
+            monAn.setKieumonan(textViewKieu.getText().toString());
+            monAn.setGiatien(Long.parseLong(editTextGia.getText().toString()));
+
+            DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Danh_sach_mon_an");
+            reference.child(String.valueOf(monAn.getId())).updateChildren(monAn.toMap(), (error, ref) -> {
+                dialog2.dismiss();
+                Toast.makeText(context, "Sửa thông tin món ăn thành công!", Toast.LENGTH_SHORT).show();
+            });
+        });
+
+        dialog2.findViewById(R.id.btn_huy).setOnClickListener(v -> dialog2.dismiss());
+    }
+
+    private void deleteMonAn(MonAn monAn, MyViewHolder holder) {
+        Long MonAnid = monAn.getId();
+        String MonAnUrl = monAn.getUrl();
+        String MonAnTen = monAn.getTenmonan();
+
+        Log.d(TAG, "XoaMonAn: Deleting...");
+        progressDialog.setMessage("Deleting " + MonAnTen+" ...");
+        progressDialog.show();
+
+        Log.d(TAG,"deleteMonAn: Deleting from storage");
+        StorageReference storageReference = FirebaseStorage.getInstance().getReferenceFromUrl(MonAnUrl);
+        storageReference.delete()
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Log.d(TAG, "onSuccess: Deleted from storage");
+
+                        Log.d(TAG,"onSuccess: Now deleting info from db");
+                        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Danh_sach_mon_an");
+                        ref.child(""+MonAnid)
+                                .removeValue()
+                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void unused) {
+                                        Log.d(TAG,"onSuccess: Deleted from db too");
+                                        progressDialog.dismiss();
+                                        Toast.makeText(context,"Món ăn đã được xóa thành công!", Toast.LENGTH_SHORT).show();
+                                    }
+                                })
+                                .addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Log.d(TAG,"onFailure: Failed to delete from db due to "+ e.getMessage());
+                                        progressDialog.dismiss();
+                                        Toast.makeText(context,"" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.d(TAG,"onFailure: Failed to delete from storage due to" + e.getMessage());
+                        progressDialog.dismiss();
+                        Toast.makeText(context,""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 
     @Override
@@ -73,6 +206,7 @@ public class MonAnAdapter extends RecyclerView.Adapter<MonAnAdapter.MyViewHolder
 
         TextView tenmonan_txt, kieumonan_txt, giatien_txt;
         ImageView hinhanh;
+        ImageButton moreBtn;
 
         MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -80,6 +214,7 @@ public class MonAnAdapter extends RecyclerView.Adapter<MonAnAdapter.MyViewHolder
             kieumonan_txt = itemView.findViewById(R.id.kieumonan);
             giatien_txt = itemView.findViewById(R.id.giatien);
             hinhanh =(ImageView) itemView.findViewById(R.id.all_menu_image);
+            moreBtn = itemView.findViewById(R.id.moreBtn);
         }
     }
 }

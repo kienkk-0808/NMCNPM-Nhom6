@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView android:layout_width="match_parent"
+<androidx.cardview.widget.CardView xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="wrap_content">
@@ -44,17 +45,35 @@
 
         <TextView
             android:id="@+id/giatien"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
+            android:layout_width="80dp"
+            android:layout_height="26dp"
             android:fontFamily="@font/open_sans_bold"
             android:text="10000000"
-            android:textColor="#FFFFFF"
-            android:textSize="13sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/kieumonan"
+            app:layout_constraintTop_toBottomOf="@+id/kieumonan" />
+
+        <ImageButton
+            android:id="@+id/moreBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
+            android:padding="5dp"
+            android:src="@drawable/ic_more_blac"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="59dp"
+            android:layout_height="26dp"
+            android:text="VNĐ"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/giatien"
+            app:layout_constraintStart_toEndOf="@+id/giatien" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
