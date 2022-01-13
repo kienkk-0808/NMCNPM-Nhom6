@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -29,12 +30,16 @@ import com.bumptech.glide.Glide;
 import com.example.nhahangamthuc.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class MonAnAdapter extends RecyclerView.Adapter<MonAnAdapter.MyViewHolder>{
     private Context context;
@@ -77,7 +82,7 @@ public class MonAnAdapter extends RecyclerView.Adapter<MonAnAdapter.MyViewHolder
     }
 
     private void moreOptionsDialog(MonAn monAn, MyViewHolder holder) {
-        String[] options = {"Edit", "Delete"};
+        String[] options = {"Sửa", "Xóa", "Thêm vào menu tốt nhất"};
 
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle("Choose Options")
@@ -90,6 +95,25 @@ public class MonAnAdapter extends RecyclerView.Adapter<MonAnAdapter.MyViewHolder
                                 .setMessage("Bạn có chắc chắn muốn xóa món ăn này không?")
                                 .setPositiveButton("Xóa", (dialog1, which1) -> deleteMonAn(monAn, holder))
                                 .setNegativeButton("Hủy", null).show();
+                    }
+                    else if(which == 2){
+                        HashMap<String, Object> hashMap = new HashMap<>();
+                        hashMap.put("monanId", ""+monAn.getId());
+                        DatabaseReference refer = FirebaseDatabase.getInstance().getReference("Danh_sach_mon_an_tot_nhat");
+                        refer.child(""+monAn.getId())
+                                .setValue(hashMap)
+                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void unused) {
+                                        Toast.makeText(context, "Đã thêm vào menu tốt nhất ngày!",Toast.LENGTH_SHORT).show();
+                                    }
+                                })
+                                .addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Toast.makeText(context, "Thêm THẤT BẠI vào menu tốt nhất ngày!",Toast.LENGTH_SHORT).show();
+                                    }
+                                });
                     }
                 })
                 .show();

@@ -1,5 +1,6 @@
 package com.example.nhahangamthuc.mon_an;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -31,10 +32,16 @@ public class MonAnFragment extends Fragment {
     FloatingActionButton fab;
 
     EditText inputSearch;
-    RecyclerView recyclerView_menu;
 
+    RecyclerView recyclerView_menu;
     ArrayList<MonAn> mListMonAn;
     MonAnAdapter monanAdapter;
+
+    RecyclerView recyclerView_bestmenu;
+    ArrayList<MonAn> mListMonAnBestMenu;
+    BestMenuAdapter bestMenuAdapter;
+
+    private ProgressDialog progressDialog;
 
     public MonAnFragment() {
         // Required empty public constructor
@@ -42,8 +49,6 @@ public class MonAnFragment extends Fragment {
 
     public static MonAnFragment newInstance() {
         MonAnFragment fragment = new MonAnFragment();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
         return fragment;
     }
 
@@ -65,14 +70,18 @@ public class MonAnFragment extends Fragment {
 
         fab = view.findViewById(R.id.fab);
         recyclerView_menu = view.findViewById(R.id.all_menu_recycler);
+        recyclerView_bestmenu = view.findViewById(R.id.recommended_recycler);
         inputSearch = view.findViewById(R.id.editText);
+
+        progressDialog = new ProgressDialog(getContext());
+        progressDialog.setTitle("Please wait...");
 
         mListMonAn = new ArrayList<>();
         monanAdapter = new MonAnAdapter(getActivity(), mListMonAn);
         recyclerView_menu.setLayoutManager(new LinearLayoutManager(getActivity()));
-
         recyclerView_menu.setAdapter(monanAdapter);
 
+        progressDialog.show();
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference ref = database.getReference("Danh_sach_mon_an");
         ref.addValueEventListener(new ValueEventListener() {
@@ -84,11 +93,46 @@ public class MonAnFragment extends Fragment {
                     mListMonAn.add(monAn);
                     monanAdapter.notifyDataSetChanged();
                 }
+                progressDialog.dismiss();
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 Toast.makeText(getActivity(), "Get list mon an faild", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        mListMonAnBestMenu = new ArrayList<>();
+        bestMenuAdapter = new BestMenuAdapter(getActivity(), mListMonAnBestMenu);
+        recyclerView_bestmenu.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false));
+        recyclerView_bestmenu.setAdapter(bestMenuAdapter);
+
+        DatabaseReference refer = FirebaseDatabase.getInstance().getReference("Danh_sach_mon_an_tot_nhat");
+        refer.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                mListMonAnBestMenu.clear();
+                for(DataSnapshot ds: snapshot.getChildren()){
+                    String monanId = ""+ds.child("monanId").getValue();
+                    ref.child(monanId).addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            MonAn monAn = snapshot.getValue(MonAn.class);
+                            mListMonAnBestMenu.add(monAn);
+                            bestMenuAdapter.notifyDataSetChanged();
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
 
