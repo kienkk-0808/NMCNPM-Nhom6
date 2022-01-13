@@ -1,24 +1,31 @@
 package com.example.nhahangamthuc.su_kien;
 
-import com.example.nhahangamthuc.mon_an.MonAn;
-
-import java.util.Date;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class SuKien {
     private int id;
     private String ten;
-    private Date ngay;
-    private List<MonAn> monAnTangKemList;
+    private String ngayThang;
+    private String monTangKem;
 
     public SuKien() {
     }
 
-    public SuKien(int id, String ten, Date ngay, List<MonAn> monAnTangKemList) {
+    public SuKien(int id, String ten, String ngayThang, String monTangKem) {
         this.id = id;
         this.ten = ten;
-        this.ngay = ngay;
-        this.monAnTangKemList = monAnTangKemList;
+        this.ngayThang = ngayThang;
+        this.monTangKem = monTangKem;
+    }
+
+    public Map<String, Object> toMap() {
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("id", id);
+        map.put("ten", ten);
+        map.put("ngayThang", ngayThang);
+        map.put("monTangKem", monTangKem);
+        return map;
     }
 
     public int getId() {
@@ -37,19 +44,19 @@ public class SuKien {
         this.ten = ten;
     }
 
-    public Date getNgay() {
-        return ngay;
+    public String getNgayThang() {
+        return ngayThang;
     }
 
-    public void setNgay(Date ngay) {
-        this.ngay = ngay;
+    public void setNgayThang(String ngayThang) {
+        this.ngayThang = ngayThang;
     }
 
-    public List<MonAn> getMonAnTangKemList() {
-        return monAnTangKemList;
+    public String getMonTangKem() {
+        return monTangKem;
     }
 
-    public void setMonAnTangKemList(List<MonAn> monAnTangKemList) {
-        this.monAnTangKemList = monAnTangKemList;
+    public void setMonTangKem(String monTangKem) {
+        this.monTangKem = monTangKem;
     }
 }

@@ -57,8 +57,7 @@ public class DoChoiFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_do_choi, container, false);
         recyclerView = view.findViewById(R.id.recycler_view_do_choi);
         view.findViewById(R.id.button_them_do_choi).setOnClickListener(v -> {
@@ -69,7 +68,6 @@ public class DoChoiFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-
         context = getContext();
         progressDialog = new ProgressDialog(context);
 
@@ -98,7 +96,6 @@ public class DoChoiFragment extends Fragment {
         });
 
         recyclerView.setAdapter(adapter);
-
     }
 
     private void setData() {
@@ -141,8 +138,7 @@ public class DoChoiFragment extends Fragment {
             EditText editTextTen = dialog.findViewById(R.id.edt_ten_do_choi);
             EditText editTextSoLuong = dialog.findViewById(R.id.edt_so_luong);
             int id = doChoiList.get(doChoiList.size()-1).getId()+1;
-            DoChoi doChoi = new DoChoi(id, Integer.parseInt(editTextSoLuong.getText().toString()),
-                    editTextTen.getText().toString());
+            DoChoi doChoi = new DoChoi(id, Integer.parseInt(editTextSoLuong.getText().toString()), editTextTen.getText().toString());
             reference.child(String.valueOf(id)).setValue(doChoi, (error, ref) -> {
                 dialog.dismiss();
                 Toast.makeText(context, "Thêm đồ chơi thành công!", Toast.LENGTH_SHORT).show();
@@ -163,6 +159,7 @@ public class DoChoiFragment extends Fragment {
         layoutParams.gravity = Gravity.CENTER;
         window.setAttributes(layoutParams);
         dialog.setCancelable(true);
+
         EditText editTextTen = dialog.findViewById(R.id.edt_ten_do_choi);
         editTextTen.setText(doChoi.getTen());
         EditText editTextSoLuong = dialog.findViewById(R.id.edt_so_luong);
