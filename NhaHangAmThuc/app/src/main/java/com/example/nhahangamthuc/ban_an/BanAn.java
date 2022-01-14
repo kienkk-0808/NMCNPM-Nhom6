@@ -10,12 +10,18 @@ public class BanAn implements Serializable {
     private Long idBan;
     private int trangThai;
     private int soNguoi;
-
     private DatBan dangAn;
-
     private List<MonAn> danhSachMon;
+    private List<DatBan> danhSachDat;
 
-    private List<BanAn> danhSachDat;
+    public BanAn(Long idBan, int soNguoi) {
+        this.idBan = idBan;
+        this.trangThai = trangThai;
+        this.soNguoi = soNguoi;
+    }
+
+    public BanAn() {
+    }
 
     public Long getIdBan() {
         return idBan;
@@ -57,11 +63,23 @@ public class BanAn implements Serializable {
         this.danhSachMon = danhSachMon;
     }
 
-    public List<BanAn> getDanhSachDat() {
+    public List<DatBan> getDanhSachDat() {
         return danhSachDat;
     }
 
-    public void setDanhSachDat(List<BanAn> danhSachDat) {
+    public void setDanhSachDat(List<DatBan> danhSachDat) {
         this.danhSachDat = danhSachDat;
+    }
+
+    @Override
+    public String toString() {
+        return "BanAn{" +
+                "idBan=" + idBan +
+                ", trangThai=" + trangThai +
+                ", soNguoi=" + soNguoi +
+                ", dangAn=" + dangAn +
+                ", danhSachMon=" + danhSachMon +
+                ", danhSachDat=" + danhSachDat +
+                '}';
     }
 }

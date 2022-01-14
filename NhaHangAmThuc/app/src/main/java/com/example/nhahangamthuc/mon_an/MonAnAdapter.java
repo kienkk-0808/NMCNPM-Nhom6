@@ -26,7 +26,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
+//import com.bumptech.glide.Glide;
 import com.example.nhahangamthuc.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -76,7 +76,7 @@ public class MonAnAdapter extends RecyclerView.Adapter<MonAnAdapter.MyViewHolder
         holder.kieumonan_txt.setText(kieumon);
         holder.giatien_txt.setText(String.valueOf(giatien));
 
-        Glide.with(holder.hinhanh.getContext()).load(monAn.getUrl()).into(holder.hinhanh);
+        //Glide.with(holder.hinhanh.getContext()).load(monAn.getUrl()).into(holder.hinhanh);
 
         holder.moreBtn.setOnClickListener(v -> moreOptionsDialog(monAn, holder));
     }
