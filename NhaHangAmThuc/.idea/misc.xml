@@ -20,27 +20,45 @@
         <entry key="..\:/Git for NMCNPM/NhaHangAmThuc/app/src/main/res/layout/popup_dialog.xml" value="0.2359375" />
         <entry key="..\:/Git for NMCNPM/NhaHangAmThuc/app/src/main/res/menu/menu_nav.xml" value="0.25" />
         <entry key="..\:/Git for NMCNPM/NhaHangAmThuc/app/src/main/res/menu/menu_nav_quan_ly.xml" value="0.25" />
-        <entry key="..\:/NMCNPM-Nhom6/NhaHangAmThuc/app/src/main/res/layout/fragment_do_choi.xml" value="0.264" />
-        <entry key="..\:/NMCNPM-Nhom6/NhaHangAmThuc/app/src/main/res/layout/item_do_choi.xml" value="0.25" />
-        <entry key="..\:/NMCNPM-Nhom6/NhaHangAmThuc/app/src/main/res/layout/popup_dialog.xml" value="0.18659420289855072" />
-        <entry key="..\:/New folder (3)/NMCNPM-Nhom6/NhaHangAmThuc/app/src/main/res/drawable-v24/ic_favorite_border_white.xml" value="0.1" />
-        <entry key="..\:/New folder (3)/NMCNPM-Nhom6/NhaHangAmThuc/app/src/main/res/drawable-v24/ic_favorite_white.xml" value="0.1" />
-        <entry key="..\:/New folder (3)/NMCNPM-Nhom6/NhaHangAmThuc/app/src/main/res/drawable-v24/ic_more_blac.xml" value="0.13489583333333333" />
-        <entry key="..\:/New folder (3)/NMCNPM-Nhom6/NhaHangAmThuc/app/src/main/res/layout/fragment_mon_an.xml" value="0.22916666666666666" />
-        <entry key="..\:/New folder (3)/NMCNPM-Nhom6/NhaHangAmThuc/app/src/main/res/layout/item_monan.xml" value="0.2" />
-        <entry key="..\:/New folder (3)/NMCNPM-Nhom6/NhaHangAmThuc/app/src/main/res/layout/item_monanmenu.xml" value="0.4" />
-        <entry key="..\:/New folder (3)/NMCNPM-Nhom6/NhaHangAmThuc/app/src/main/res/layout/spinner_item_category.xml" value="0.25" />
-        <entry key="..\:/New folder (3)/NMCNPM-Nhom6/NhaHangAmThuc/app/src/main/res/layout/spinner_item_selected.xml" value="0.25" />
-        <entry key="..\:/New folder (4)/NMCNPM-Nhom6/NhaHangAmThuc/app/src/main/res/drawable/bg_yeallow_cornor_16_top.xml" value="0.17864583333333334" />
-        <entry key="..\:/New folder (4)/NMCNPM-Nhom6/NhaHangAmThuc/app/src/main/res/drawable/ic_back_white.xml" value="0.14375" />
-        <entry key="..\:/New folder (4)/NMCNPM-Nhom6/NhaHangAmThuc/app/src/main/res/drawable/shape_toolbar01.xml" value="0.14375" />
-        <entry key="..\:/New folder (4)/NMCNPM-Nhom6/NhaHangAmThuc/app/src/main/res/layout/activity_add_mon_an.xml" value="0.15677083333333333" />
-        <entry key="..\:/New folder (4)/NMCNPM-Nhom6/NhaHangAmThuc/app/src/main/res/layout/activity_edit_mon_an.xml" value="0.15677083333333333" />
-        <entry key="..\:/New folder (4)/NMCNPM-Nhom6/NhaHangAmThuc/app/src/main/res/layout/item_do_choi.xml" value="0.125" />
-        <entry key="..\:/New folder (4)/NMCNPM-Nhom6/NhaHangAmThuc/app/src/main/res/layout/item_monan.xml" value="0.264" />
-        <entry key="..\:/New folder (4)/NMCNPM-Nhom6/NhaHangAmThuc/app/src/main/res/layout/popup_dialog.xml" value="0.1625" />
-        <entry key="..\:/New folder (4)/NMCNPM-Nhom6/NhaHangAmThuc/app/src/main/res/layout/popup_dialog2.xml" value="0.4" />
-        <entry key="..\:/New folder (4)/NMCNPM-Nhom6/NhaHangAmThuc/app/src/main/res/layout/popup_dialog_monan.xml" value="0.264" />
+        <entry key="..\:/Learn/20211/CNPM/Project/NMCNPM-Nhom6/NhaHangAmThuc/app/src/main/res/drawable-v24/ic_favorite_border_white.xml" value="0.1125" />
+        <entry key="..\:/Learn/20211/CNPM/Project/NMCNPM-Nhom6/NhaHangAmThuc/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1125" />
+        <entry key="..\:/Learn/20211/CNPM/Project/NMCNPM-Nhom6/NhaHangAmThuc/app/src/main/res/drawable-v24/ic_more_blac.xml" value="0.11770833333333333" />
+        <entry key="..\:/Learn/20211/CNPM/Project/NMCNPM-Nhom6/NhaHangAmThuc/app/src/main/res/drawable/bg_white_cornor_16.xml" value="0.1" />
+        <entry key="..\:/Learn/20211/CNPM/Project/NMCNPM-Nhom6/NhaHangAmThuc/app/src/main/res/drawable/border_greybg.xml" value="0.1125" />
+        <entry key="..\:/Learn/20211/CNPM/Project/NMCNPM-Nhom6/NhaHangAmThuc/app/src/main/res/drawable/ic_back_white.xml" value="0.19166666666666668" />
+        <entry key="..\:/Learn/20211/CNPM/Project/NMCNPM-Nhom6/NhaHangAmThuc/app/src/main/res/drawable/ic_ban_an.xml" value="0.19166666666666668" />
+        <entry key="..\:/Learn/20211/CNPM/Project/NMCNPM-Nhom6/NhaHangAmThuc/app/src/main/res/drawable/ic_baseline_goi_mon_24.xml" value="0.1125" />
+        <entry key="..\:/Learn/20211/CNPM/Project/NMCNPM-Nhom6/NhaHangAmThuc/app/src/main/res/drawable/ic_baseline_money_24.xml" value="0.11770833333333333" />
+        <entry key="..\:/Learn/20211/CNPM/Project/NMCNPM-Nhom6/NhaHangAmThuc/app/src/main/res/drawable/ic_category_gray.xml" value="0.1125" />
+        <entry key="..\:/Learn/20211/CNPM/Project/NMCNPM-Nhom6/NhaHangAmThuc/app/src/main/res/drawable/ic_delete.xml" value="0.19166666666666668" />
+        <entry key="..\:/Learn/20211/CNPM/Project/NMCNPM-Nhom6/NhaHangAmThuc/app/src/main/res/drawable/ic_down_gray.xml" value="0.1" />
+        <entry key="..\:/Learn/20211/CNPM/Project/NMCNPM-Nhom6/NhaHangAmThuc/app/src/main/res/drawable/ic_food.xml" value="0.1125" />
+        <entry key="..\:/Learn/20211/CNPM/Project/NMCNPM-Nhom6/NhaHangAmThuc/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1125" />
+        <entry key="..\:/Learn/20211/CNPM/Project/NMCNPM-Nhom6/NhaHangAmThuc/app/src/main/res/drawable/ic_pdf_add_white.xml" value="0.11770833333333333" />
+        <entry key="..\:/Learn/20211/CNPM/Project/NMCNPM-Nhom6/NhaHangAmThuc/app/src/main/res/drawable/ic_pdf_gray.xml" value="0.11770833333333333" />
+        <entry key="..\:/Learn/20211/CNPM/Project/NMCNPM-Nhom6/NhaHangAmThuc/app/src/main/res/drawable/ic_search_black_24dp.xml" value="0.1" />
+        <entry key="..\:/Learn/20211/CNPM/Project/NMCNPM-Nhom6/NhaHangAmThuc/app/src/main/res/drawable/ic_su_kien.xml" value="0.1125" />
+        <entry key="..\:/Learn/20211/CNPM/Project/NMCNPM-Nhom6/NhaHangAmThuc/app/src/main/res/drawable/ic_thongke.xml" value="0.1125" />
+        <entry key="..\:/Learn/20211/CNPM/Project/NMCNPM-Nhom6/NhaHangAmThuc/app/src/main/res/drawable/search_bg.xml" value="0.11770833333333333" />
+        <entry key="..\:/Learn/20211/CNPM/Project/NMCNPM-Nhom6/NhaHangAmThuc/app/src/main/res/drawable/shape_edittext01.xml" value="0.1125" />
+        <entry key="..\:/Learn/20211/CNPM/Project/NMCNPM-Nhom6/NhaHangAmThuc/app/src/main/res/drawable/shape_toolbar01.xml" value="0.1125" />
+        <entry key="..\:/Learn/20211/CNPM/Project/NMCNPM-Nhom6/NhaHangAmThuc/app/src/main/res/font/open_sans_bold.xml" value="0.20572916666666666" />
+        <entry key="..\:/Learn/20211/CNPM/Project/NMCNPM-Nhom6/NhaHangAmThuc/app/src/main/res/font/open_sans_semibold.xml" value="0.20572916666666666" />
+        <entry key="..\:/Learn/20211/CNPM/Project/NMCNPM-Nhom6/NhaHangAmThuc/app/src/main/res/layout/activity_chi_tiet_ban.xml" value="0.22961730449251247" />
+        <entry key="..\:/Learn/20211/CNPM/Project/NMCNPM-Nhom6/NhaHangAmThuc/app/src/main/res/layout/activity_dat_ban.xml" value="0.17552083333333332" />
+        <entry key="..\:/Learn/20211/CNPM/Project/NMCNPM-Nhom6/NhaHangAmThuc/app/src/main/res/layout/fragment_danh_sach_ban_an.xml" value="0.16666666666666666" />
+        <entry key="..\:/Learn/20211/CNPM/Project/NMCNPM-Nhom6/NhaHangAmThuc/app/src/main/res/layout/fragment_ds_ban.xml" value="0.16666666666666666" />
+        <entry key="..\:/Learn/20211/CNPM/Project/NMCNPM-Nhom6/NhaHangAmThuc/app/src/main/res/layout/fragment_ds_ban_trong.xml" value="0.4466666666666667" />
+        <entry key="..\:/Learn/20211/CNPM/Project/NMCNPM-Nhom6/NhaHangAmThuc/app/src/main/res/layout/fragment_mon_an.xml" value="0.22" />
+        <entry key="..\:/Learn/20211/CNPM/Project/NMCNPM-Nhom6/NhaHangAmThuc/app/src/main/res/layout/item_dat_ban_info.xml" value="0.22" />
+        <entry key="..\:/Learn/20211/CNPM/Project/NMCNPM-Nhom6/NhaHangAmThuc/app/src/main/res/layout/item_do_choi.xml" value="0.1" />
+        <entry key="..\:/Learn/20211/CNPM/Project/NMCNPM-Nhom6/NhaHangAmThuc/app/src/main/res/layout/item_monan.xml" value="0.22" />
+        <entry key="..\:/Learn/20211/CNPM/Project/NMCNPM-Nhom6/NhaHangAmThuc/app/src/main/res/layout/item_monan_chitietban.xml" value="0.3333333333333333" />
+        <entry key="..\:/Learn/20211/CNPM/Project/NMCNPM-Nhom6/NhaHangAmThuc/app/src/main/res/layout/item_monanmenu.xml" value="0.1" />
+        <entry key="..\:/Learn/20211/CNPM/Project/NMCNPM-Nhom6/NhaHangAmThuc/app/src/main/res/layout/item_su_kien.xml" value="0.1" />
+        <entry key="..\:/Learn/20211/CNPM/Project/NMCNPM-Nhom6/NhaHangAmThuc/app/src/main/res/menu/menu_nav_quan_ly.xml" value="0.1" />
+        <entry key="..\:/Learn/20211/CNPM/Project/NMCNPM-Nhom6/NhaHangAmThuc/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1125" />
+        <entry key="..\:/Learn/20211/CNPM/Project/NMCNPM-Nhom6/NhaHangAmThuc/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1125" />
         <entry key="..\:/Users/gplma/AndroidStudioProjects/NhaHangAmThuc/app/src/main/res/layout/activity_dinh_danh.xml" value="0.25" />
         <entry key="..\:/Users/gplma/AndroidStudioProjects/NhaHangAmThuc/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/gplma/AndroidStudioProjects/NhaHangAmThuc/app/src/main/res/layout/activity_nhan_vien.xml" value="0.25" />

@@ -110,8 +110,8 @@ public class DsBanTrongFragment extends Fragment {
         banAnAdapter.setData(listBan);
         rcvBan.setAdapter(banAnAdapter);
 
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference listBanRef = database.getReference("list_ban_an");
+//        FirebaseDatabase database = FirebaseDatabase.getInstance();
+//        DatabaseReference listBanRef = database.getReference("list_ban_an");
 
         listBanRef.addValueEventListener(new ValueEventListener() {
             @Override
