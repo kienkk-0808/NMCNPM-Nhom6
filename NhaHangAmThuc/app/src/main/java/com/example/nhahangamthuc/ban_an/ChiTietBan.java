@@ -26,12 +26,7 @@ public class ChiTietBan extends AppCompatActivity {
         banAn = (BanAn) intent.getSerializableExtra("BanAn");
         tvIdBan.setText("BÀN "+banAn.getIdBan().toString());
 
-        btnDatBan.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                lauchDatBanView();
-            }
-        });
+        btnDatBan.setOnClickListener(v -> lauchDatBanView());
     }
 
     private void lauchDatBanView() {

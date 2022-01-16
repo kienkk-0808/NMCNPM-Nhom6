@@ -1,19 +1,11 @@
 package com.example.nhahangamthuc.dinh_danh;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.TextView;
 
 import com.example.nhahangamthuc.R;
-import com.example.nhahangamthuc.User;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 public class DinhDanhActivity extends AppCompatActivity {
 
