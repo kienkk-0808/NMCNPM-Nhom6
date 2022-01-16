@@ -1,15 +1,18 @@
 package com.example.nhahangamthuc.ban_an;
 
+import static androidx.core.content.ContextCompat.getSystemService;
+
+import android.app.Activity;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -26,7 +29,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
@@ -106,7 +108,7 @@ public class DsBanTrongFragment extends Fragment {
         rcvBan.setLayoutManager(gridLayoutManager);
 
         listBan = new ArrayList<>();
-        listBanOld= new ArrayList<>();
+        listBanOld = new ArrayList<>();
         banAnAdapter.setData(listBan);
         rcvBan.setAdapter(banAnAdapter);
 
@@ -116,8 +118,8 @@ public class DsBanTrongFragment extends Fragment {
         listBanRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    listBan.clear();
-                    listBanOld.clear();
+                listBan.clear();
+                listBanOld.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     BanAn banAn = dataSnapshot.getValue(BanAn.class);
                     listBan.add(banAn);
@@ -141,7 +143,7 @@ public class DsBanTrongFragment extends Fragment {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    private void searchHandle(){
+    private void searchHandle() {
         List<String> listNgay;
         //spinner ngay
         listNgay = dsBanService.getListNgay();
@@ -192,24 +194,28 @@ public class DsBanTrongFragment extends Fragment {
 //                    dsBanService.setTrangThaiListBan(listBan, searchTime);
 //                    banAnAdapter.notifyDataSetChanged();
                     setListBanTrong(searchTime);
-                }else{
+                } else {
                     Toast.makeText(getContext(), "Error: Convert Date Time",
                             Toast.LENGTH_LONG).show();
                 }
+
                 String keyword = edtSearch.getText().toString().trim();
                 banAnAdapter.getFilter().filter(keyword);
+                edtSearch.clearFocus();
             }
         });
     }
-    private void setListBanTrong(Timestamp time){
+
+    private void setListBanTrong(Timestamp time) {
         dsBanService.setTrangThaiListBan(listBanOld, time);
         listBan.clear();
-        for (BanAn banAn:listBanOld)
+        for (BanAn banAn : listBanOld)
             if (banAn.getTrangThai() == 0)
                 listBan.add(banAn);
         banAnAdapter.notifyDataSetChanged();
     }
-    private void mapping(View view){
+
+    private void mapping(View view) {
         rcvBan = (RecyclerView) view.findViewById(R.id.rcv_dsbantrong);
         spinnerNgay = (Spinner) view.findViewById(R.id.spns_ngay);
         spinnerGio = (Spinner) view.findViewById(R.id.spns_gio);
