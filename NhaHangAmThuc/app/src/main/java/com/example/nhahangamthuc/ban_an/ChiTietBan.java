@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ChiTietBan extends AppCompatActivity {
-    private BanAn banAn;
+    private BanAn banAn, ban;
     private Button btnDatBan;
     private Button btnThanhToan;
     private Button btnGoiMon;
@@ -118,6 +118,48 @@ public class ChiTietBan extends AppCompatActivity {
             updateDatBanInfo();
             setListDatBan(banAn.getDanhSachDat());
         }
+//        btnGoiMon.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                listBanRef.child("101").addValueEventListener(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                        ban = snapshot.getValue(BanAn.class);
+//                        List<MonAn> listMon = new ArrayList<>();
+//                        DatabaseReference listMonRef = FirebaseDatabase.getInstance().
+//                                getReference("Danh_sach_mon_an");
+//                        listMonRef.addValueEventListener(new ValueEventListener() {
+//                            @Override
+//                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+//                                    MonAn monAn = dataSnapshot.getValue(MonAn.class);
+//                                    monAn.setSoLuong(5);
+//                                    listMon.add(monAn);
+//                                }
+//                                ban.setDanhSachMon(listMon);
+//                                ban.setDangAn(ban.getDanhSachDat().get(0));
+//                                listBanRef.child("101").setValue(ban);
+//                            }
+//
+//
+//                        @Override
+//                        public void onCancelled (@NonNull DatabaseError error){
+//
+//                        }
+//                    });
+//
+//
+//                }
+//
+//                @Override
+//                public void onCancelled (@NonNull DatabaseError error){
+//
+//                }
+//            });
+//
+//        }
+//    });
     }
 
     private void updateDatBanInfo() {
