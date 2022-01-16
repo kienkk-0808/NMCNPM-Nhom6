@@ -25,6 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:text="DAT BAN 101"
+            android:textColor="@color/black"
             android:textAlignment="center"
             android:layout_weight="4"
             android:textSize="40dp" />
