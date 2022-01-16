@@ -1,14 +1,24 @@
 package com.example.nhahangamthuc.ban_an;
 
-import java.sql.Timestamp;
 
 public class DatBan {
     private Long id;
     private String ten;
     private String sdt;
     private int soNguoi;
-    private Timestamp thoiGian;
-    private Long idBan;
+    private String thoiGian;
+    //private Long idBan;
+
+    public DatBan() {
+    }
+
+    public DatBan(Long id, String ten, String sdt, int soNguoi, String thoiGian) {
+        this.id = id;
+        this.ten = ten;
+        this.sdt = sdt;
+        this.soNguoi = soNguoi;
+        this.thoiGian = thoiGian;
+    }
 
     public Long getId() {
         return id;
@@ -42,19 +52,19 @@ public class DatBan {
         this.soNguoi = soNguoi;
     }
 
-    public Timestamp getThoiGian() {
+    public String getThoiGian() {
         return thoiGian;
     }
 
-    public void setThoiGian(Timestamp thoiGian) {
+    public void setThoiGian(String thoiGian) {
         this.thoiGian = thoiGian;
     }
 
-    public Long getIdBan() {
-        return idBan;
-    }
-
-    public void setIdBan(Long idBan) {
-        this.idBan = idBan;
-    }
+//    public Long getIdBan() {
+//        return idBan;
+//    }
+//
+//    public void setIdBan(Long idBan) {
+//        this.idBan = idBan;
+//    }
 }

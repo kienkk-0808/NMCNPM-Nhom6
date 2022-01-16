@@ -25,7 +25,7 @@ import java.util.ArrayList;
 
 public class BestMenuAdapter extends RecyclerView.Adapter<BestMenuAdapter.BestMenuHolder>{
     private Context context;
-    private ArrayList<MonAn> mListMonAn;
+    public ArrayList<MonAn> mListMonAn;
 
     public BestMenuAdapter(Context context, ArrayList<MonAn> mListMonAn){
         this.context = context;

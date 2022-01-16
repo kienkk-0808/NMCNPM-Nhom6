@@ -18,6 +18,8 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -26,6 +28,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+//import com.bumptech.glide.Glide;
 import com.bumptech.glide.Glide;
 import com.example.nhahangamthuc.R;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -41,17 +44,19 @@ import com.google.firebase.storage.StorageReference;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class MonAnAdapter extends RecyclerView.Adapter<MonAnAdapter.MyViewHolder>{
+public class MonAnAdapter extends RecyclerView.Adapter<MonAnAdapter.MyViewHolder> implements Filterable {
     private Context context;
-    private ArrayList<MonAn> mListMonAn;
+    public ArrayList<MonAn> mListMonAn, filterList;
 
     private static final String TAG = "MonAn_ADAPTER_TAG";
 
     private ProgressDialog progressDialog;
+    private FilterMonAn filter;
 
     public MonAnAdapter(Context context, ArrayList<MonAn> mListMonAn){
         this.context = context;
         this.mListMonAn = mListMonAn;
+        this.filterList = mListMonAn;
 
         progressDialog = new ProgressDialog(context);
         progressDialog.setTitle("Please wait");
@@ -224,6 +229,14 @@ public class MonAnAdapter extends RecyclerView.Adapter<MonAnAdapter.MyViewHolder
     @Override
     public int getItemCount() {
         return mListMonAn.size();
+    }
+
+    @Override
+    public Filter getFilter() {
+        if (filter == null){
+            filter = new FilterMonAn(filterList, this);
+        }
+        return filter;
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder {

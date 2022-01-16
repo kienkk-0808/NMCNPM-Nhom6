@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -12,13 +14,14 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nhahangamthuc.R;
-import com.example.nhahangamthuc.ban_an.ChiTietBan;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class BanAnAdapter extends RecyclerView.Adapter<BanAnAdapter.BanViewHolder> {
+public class BanAnAdapter extends RecyclerView.Adapter<BanAnAdapter.BanViewHolder> implements Filterable {
     private Context context;
     private List<BanAn> listBan;
+    private List<BanAn> listBanOld;
 
     public BanAnAdapter(Context context) {
         this.context = context;
@@ -26,9 +29,11 @@ public class BanAnAdapter extends RecyclerView.Adapter<BanAnAdapter.BanViewHolde
 
     public void setData(List<BanAn> listBan) {
         this.listBan = listBan;
+        this.listBanOld = listBan;
         notifyDataSetChanged();
     }
-    public BanAn getItem(int position){
+
+    public BanAn getItem(int position) {
         return listBan.get(position);
     }
 
@@ -52,7 +57,7 @@ public class BanAnAdapter extends RecyclerView.Adapter<BanAnAdapter.BanViewHolde
                 public void onClick(View v) {
                     //lauch Chi tiet ban
                     Intent intent = new Intent(context, ChiTietBan.class);
-                    intent.putExtra("BanAn", banAn);
+                    intent.putExtra("BanAn", banAn.getIdBan().toString());
                     context.startActivity(intent);
                 }
             });
@@ -68,6 +73,7 @@ public class BanAnAdapter extends RecyclerView.Adapter<BanAnAdapter.BanViewHolde
         return 0;
     }
 
+
     public class BanViewHolder extends RecyclerView.ViewHolder {
         private ImageView imgvBan;
         private TextView tvMoTa;
@@ -78,5 +84,50 @@ public class BanAnAdapter extends RecyclerView.Adapter<BanAnAdapter.BanViewHolde
             tvMoTa = itemView.findViewById(R.id.tv_mo_ta);
         }
 
+    }
+
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence constraint) {
+                String keyword = constraint.toString().toLowerCase();
+                if (keyword.isEmpty()) {
+                    listBan = listBanOld;
+                } else {
+                    List<BanAn> list = new ArrayList<>();
+                    for (BanAn banAn : listBanOld) {
+                        if (banAn.getIdBan().toString().contains(keyword)) {
+                            list.add(banAn);
+                        } else if (banAn.getDangAn() != null) {
+                            if (banAn.getDangAn().getTen().toLowerCase().contains(keyword) ||
+                                    banAn.getDangAn().getSdt().contains(keyword))
+                                list.add(banAn);
+                        } else if (banAn.getDanhSachDat() != null) {
+                            for (DatBan datBan : banAn.getDanhSachDat()) {
+                                if (datBan.getSdt().contains(keyword) ||
+                                        datBan.getTen().toLowerCase().contains(keyword)) {
+                                    list.add(banAn);
+                                    break;
+                                }
+
+                            }
+                        }
+                    }
+                    listBan = list;
+                }
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = listBan;
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence constraint, FilterResults results) {
+                listBan = (List<BanAn>) results.values;
+                notifyDataSetChanged();
+            }
+        }
+
+                ;
     }
 }
