@@ -1,5 +1,6 @@
 package com.example.nhahangamthuc.ban_an;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
@@ -50,6 +51,7 @@ public class DsBanFragment extends Fragment {
     private DatabaseReference listBanRef = FirebaseDatabase.getInstance().
             getReference("list_ban_an");
     private DsBanService dsBanService;
+    private ProgressDialog progressDialog;
     public DsBanFragment() {
         // Required empty public constructor
     }
@@ -89,6 +91,7 @@ public class DsBanFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_ds_ban, container, false);
         mapping(view);
         edtSearch.setText("");
+        progressDialog = new ProgressDialog(getContext());
         banAnAdapter = new BanAnAdapter(getActivity());
         dsBanService = new DsBanService();
 
@@ -103,6 +106,7 @@ public class DsBanFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 listBan.clear();
+                progressDialog.show();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()){
                     BanAn banAn = dataSnapshot.getValue(BanAn.class);
                     listBan.add(banAn);
@@ -111,6 +115,7 @@ public class DsBanFragment extends Fragment {
                 dsBanService.setTrangThaiListBan(listBan,
                         new Timestamp(System.currentTimeMillis()));
                 banAnAdapter.notifyDataSetChanged();
+                progressDialog.dismiss();
             }
 
             @Override

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:weightSum="10">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="8"
+        android:layout_marginHorizontal="3dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:id="@+id/tv_crudban_id"
+            android:textStyle="bold"
+            android:layout_marginVertical="3dp"
+            android:text="This is a table"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:layout_marginVertical="3dp"
+            android:id="@+id/tv_crudban_songuoi"
+            android:textStyle="bold"
+            android:text="This is quantity"/>
+
+    </LinearLayout>
+
+    <ImageButton
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_edit"
+        android:scaleType="centerCrop"
+        android:id="@+id/imgb_crudban_sua"
+        android:layout_weight="1"
+        android:layout_marginHorizontal="3dp"
+        android:contentDescription="Sửa thông tin bàn" />
+
+    <ImageButton
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_delete"
+        android:scaleType="centerCrop"
+        android:layout_marginHorizontal="3dp"
+        android:id="@+id/imgb_crudban_xoa"
+        android:layout_weight="1"
+        android:contentDescription="Xóa bàn" />
+
+
+</LinearLayout>

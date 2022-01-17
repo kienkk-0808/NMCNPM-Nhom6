@@ -3,7 +3,9 @@ package com.example.nhahangamthuc.ban_an;
 import com.example.nhahangamthuc.mon_an.MonAn;
 
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class BanAn implements Serializable {
 
@@ -16,7 +18,7 @@ public class BanAn implements Serializable {
 
     public BanAn(Long idBan, int soNguoi) {
         this.idBan = idBan;
-        this.trangThai = trangThai;
+        this.trangThai = 0;
         this.soNguoi = soNguoi;
     }
 
@@ -81,5 +83,11 @@ public class BanAn implements Serializable {
                 ", danhSachMon=" + danhSachMon +
                 ", danhSachDat=" + danhSachDat +
                 '}';
+    }
+    public Map<String, Object> toMap() {
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("idBan", idBan);
+        map.put("soNguoi", soNguoi);
+        return map;
     }
 }

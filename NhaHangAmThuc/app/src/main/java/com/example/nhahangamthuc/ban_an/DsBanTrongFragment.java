@@ -3,6 +3,8 @@ package com.example.nhahangamthuc.ban_an;
 import static androidx.core.content.ContextCompat.getSystemService;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -59,6 +61,7 @@ public class DsBanTrongFragment extends Fragment {
     private String ngay;
     private String gio;
     private Timestamp searchTime;
+    private ProgressDialog progressDialog;
 
     private DatabaseReference listBanRef = FirebaseDatabase.getInstance().
             getReference("list_ban_an");
@@ -102,6 +105,7 @@ public class DsBanTrongFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_ds_ban_trong, container, false);
         mapping(view);
         edtSearch.setText("");
+        progressDialog = new ProgressDialog(getContext());
         banAnAdapter = new BanAnAdapter(getActivity());
         dsBanService = new DsBanService();
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 3);
@@ -120,6 +124,7 @@ public class DsBanTrongFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 listBan.clear();
                 listBanOld.clear();
+                progressDialog.show();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     BanAn banAn = dataSnapshot.getValue(BanAn.class);
                     listBan.add(banAn);
@@ -189,7 +194,7 @@ public class DsBanTrongFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 //Toast.makeText(getContext(), ngay + gio +"x", Toast.LENGTH_SHORT).show();
-                Timestamp searchTime = Timestamp.valueOf(ngay + " " + gio + ":10");
+                searchTime = Timestamp.valueOf(ngay + " " + gio + ":10");
                 if (searchTime != null) {
 //                    dsBanService.setTrangThaiListBan(listBan, searchTime);
 //                    banAnAdapter.notifyDataSetChanged();
@@ -202,6 +207,10 @@ public class DsBanTrongFragment extends Fragment {
                 String keyword = edtSearch.getText().toString().trim();
                 banAnAdapter.getFilter().filter(keyword);
                 edtSearch.clearFocus();
+                InputMethodManager imm = (InputMethodManager)v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                if (imm != null) {
+                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                }
             }
         });
     }
@@ -213,6 +222,7 @@ public class DsBanTrongFragment extends Fragment {
             if (banAn.getTrangThai() == 0)
                 listBan.add(banAn);
         banAnAdapter.notifyDataSetChanged();
+        progressDialog.dismiss();
     }
 
     private void mapping(View view) {

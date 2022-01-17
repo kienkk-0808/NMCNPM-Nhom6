@@ -97,20 +97,26 @@ public class BanAnAdapter extends RecyclerView.Adapter<BanAnAdapter.BanViewHolde
                 } else {
                     List<BanAn> list = new ArrayList<>();
                     for (BanAn banAn : listBanOld) {
+                        int d=0;
                         if (banAn.getIdBan().toString().contains(keyword)) {
                             list.add(banAn);
-                        } else if (banAn.getDangAn() != null) {
+                            d=1;
+                        }
+                        if (banAn.getDangAn() != null && d==0) {
                             if (banAn.getDangAn().getTen().toLowerCase().contains(keyword) ||
-                                    banAn.getDangAn().getSdt().contains(keyword))
+                                    banAn.getDangAn().getSdt().contains(keyword)) {
                                 list.add(banAn);
-                        } else if (banAn.getDanhSachDat() != null) {
+                                d=1;
+                            }
+                        }
+                        if (banAn.getDanhSachDat() != null && d==0) {
                             for (DatBan datBan : banAn.getDanhSachDat()) {
                                 if (datBan.getSdt().contains(keyword) ||
                                         datBan.getTen().toLowerCase().contains(keyword)) {
                                     list.add(banAn);
+                                    d=1;
                                     break;
                                 }
-
                             }
                         }
                     }
