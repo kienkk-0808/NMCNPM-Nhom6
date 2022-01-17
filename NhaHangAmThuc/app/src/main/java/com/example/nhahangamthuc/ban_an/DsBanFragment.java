@@ -2,7 +2,6 @@ package com.example.nhahangamthuc.ban_an;
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,7 +12,6 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -29,21 +27,8 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link DsBanFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class DsBanFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
     private EditText edtSearch;
     private ImageButton imgbSearch;
     private RecyclerView rcvBan;
@@ -56,32 +41,14 @@ public class DsBanFragment extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment DsBanFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static DsBanFragment newInstance(String param1, String param2) {
-        DsBanFragment fragment = new DsBanFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
+    public static DsBanFragment newInstance() {
+
+        return new DsBanFragment();
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-
     }
 
     @Override
@@ -124,17 +91,13 @@ public class DsBanFragment extends Fragment {
             }
         });
 
-        imgbSearch.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.M)
-            @Override
-            public void onClick(View v) {
-                String keyword = edtSearch.getText().toString().trim();
-                banAnAdapter.getFilter().filter(keyword);
-                edtSearch.clearFocus();
-                InputMethodManager imm = (InputMethodManager)v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-                if (imm != null) {
-                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
-                }
+        imgbSearch.setOnClickListener(v -> {
+            String keyword = edtSearch.getText().toString().trim();
+            banAnAdapter.getFilter().filter(keyword);
+            edtSearch.clearFocus();
+            InputMethodManager imm = (InputMethodManager)v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+            if (imm != null) {
+                imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
             }
         });
         return  view;

@@ -9,13 +9,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.nhahangamthuc.R;
 import com.example.nhahangamthuc.mon_an.MonAn;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -57,27 +55,21 @@ public class MonTrongBanAdapter extends RecyclerView.Adapter<MonTrongBanAdapter.
 
         Glide.with(holder.hinhanh.getContext()).load(monAn.getUrl()).into(holder.hinhanh);
 
-        holder.cong.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                monAn.setSoLuong(monAn.getSoLuong() + 1);
-                holder.soLuong_txt.setText(String.valueOf(monAn.getSoLuong()));
-                updateDB(pos, mListMonAn);
-            }
+        holder.cong.setOnClickListener(v -> {
+            monAn.setSoLuong(monAn.getSoLuong() + 1);
+            holder.soLuong_txt.setText(String.valueOf(monAn.getSoLuong()));
+            updateDB(pos, mListMonAn);
         });
-        holder.tru.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                monAn.setSoLuong(monAn.getSoLuong() - 1);
-                if (monAn.getSoLuong() < 1) {
-                    mListMonAn.remove(pos);
-                    notifyDataSetChanged();
-                }
-                else
-                    holder.soLuong_txt.setText(String.valueOf(monAn.getSoLuong()));
-                updateDB(pos, mListMonAn);
-
+        holder.tru.setOnClickListener(v -> {
+            monAn.setSoLuong(monAn.getSoLuong() - 1);
+            if (monAn.getSoLuong() < 1) {
+                mListMonAn.remove(pos);
+                notifyDataSetChanged();
             }
+            else
+                holder.soLuong_txt.setText(String.valueOf(monAn.getSoLuong()));
+            updateDB(pos, mListMonAn);
+
         });
     }
 

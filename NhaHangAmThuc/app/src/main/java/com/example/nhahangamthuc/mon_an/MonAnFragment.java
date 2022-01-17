@@ -19,7 +19,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.nhahangamthuc.R;
-import com.example.nhahangamthuc.dinh_danh.QuanLyActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -183,12 +182,9 @@ public class MonAnFragment extends Fragment {
             }
         });
 
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), AddMonAn.class);
-                startActivity(intent);
-            }
+        fab.setOnClickListener(v -> {
+            Intent intent = new Intent(v.getContext(), AddMonAn.class);
+            startActivity(intent);
         });
     }
 }

@@ -5,9 +5,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.example.nhahangamthuc.ban_an.DsBanFragment;
-import com.example.nhahangamthuc.ban_an.DsBanTrongFragment;
-
 //Adapter for two ViewPager2 of TabLayout
 public class ViewPagerAdapter extends FragmentStateAdapter {
 

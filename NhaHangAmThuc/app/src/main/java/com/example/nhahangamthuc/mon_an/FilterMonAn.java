@@ -3,7 +3,6 @@ package com.example.nhahangamthuc.mon_an;
 import android.widget.Filter;
 
 import java.util.ArrayList;
-import java.util.Locale;
 
 public class FilterMonAn extends Filter {
 

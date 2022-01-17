@@ -24,8 +24,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nhahangamthuc.R;
-import com.example.nhahangamthuc.do_choi.DoChoi;
-import com.example.nhahangamthuc.do_choi.DoChoiAdapter;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
