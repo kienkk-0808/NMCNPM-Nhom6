@@ -4,28 +4,21 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class SuKien {
+
     private int id;
     private String ten;
-    private String ngayThang;
+    private String startDate;
+    private String endDate;
     private String monTangKem;
 
-    public SuKien() {
-    }
+    public SuKien() {}
 
-    public SuKien(int id, String ten, String ngayThang, String monTangKem) {
+    public SuKien(int id, String ten, String startDate, String endDate, String monTangKem) {
         this.id = id;
         this.ten = ten;
-        this.ngayThang = ngayThang;
+        this.startDate = startDate;
+        this.endDate = endDate;
         this.monTangKem = monTangKem;
-    }
-
-    public Map<String, Object> toMap() {
-        HashMap<String, Object> map = new HashMap<>();
-        map.put("id", id);
-        map.put("ten", ten);
-        map.put("ngayThang", ngayThang);
-        map.put("monTangKem", monTangKem);
-        return map;
     }
 
     public int getId() {
@@ -44,12 +37,20 @@ public class SuKien {
         this.ten = ten;
     }
 
-    public String getNgayThang() {
-        return ngayThang;
+    public String getStartDate() {
+        return startDate;
     }
 
-    public void setNgayThang(String ngayThang) {
-        this.ngayThang = ngayThang;
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
+    }
+
+    public String getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
     }
 
     public String getMonTangKem() {
@@ -58,5 +59,26 @@ public class SuKien {
 
     public void setMonTangKem(String monTangKem) {
         this.monTangKem = monTangKem;
+    }
+
+    public Map<String, Object> toMap() {
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("id", id);
+        map.put("ten", ten);
+        map.put("startDate", startDate);
+        map.put("endDate", endDate);
+        map.put("monTangKem", monTangKem);
+        return map;
+    }
+
+    @Override
+    public String toString() {
+        return "SuKien{" +
+                "id=" + id +
+                ", ten='" + ten + '\'' +
+                ", startDate='" + startDate + '\'' +
+                ", endDate='" + endDate + '\'' +
+                ", monTangKem='" + monTangKem + '\'' +
+                '}';
     }
 }

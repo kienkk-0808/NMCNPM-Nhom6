@@ -13,7 +13,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -159,6 +161,8 @@ public class DoChoiFragment extends Fragment {
         layoutParams.gravity = Gravity.CENTER;
         window.setAttributes(layoutParams);
         dialog.setCancelable(true);
+        TextView title = dialog.findViewById(R.id.text_view_title);
+        title.setText("Cập nhật thông tin đồ chơi");
 
         EditText editTextTen = dialog.findViewById(R.id.edt_ten_do_choi);
         editTextTen.setText(doChoi.getTen());
@@ -166,12 +170,14 @@ public class DoChoiFragment extends Fragment {
         editTextSoLuong.setText(String.valueOf(doChoi.getSoLuong()));
         dialog.show();
 
-        dialog.findViewById(R.id.btn_them).setOnClickListener(v -> {
+        Button buttonSua = dialog.findViewById(R.id.btn_them);
+        buttonSua.setText("Cập nhật");
+        buttonSua.setOnClickListener(v -> {
             doChoi.setTen(editTextTen.getText().toString());
             doChoi.setSoLuong(Integer.parseInt(editTextSoLuong.getText().toString()));
             reference.child(String.valueOf(doChoi.getId())).updateChildren(doChoi.toMap(), (error, ref) -> {
                 dialog.dismiss();
-                Toast.makeText(context, "Sửa thông tin đồ chơi thành công!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Cập nhật thông tin đồ chơi thành công!", Toast.LENGTH_SHORT).show();
             });
         });
 

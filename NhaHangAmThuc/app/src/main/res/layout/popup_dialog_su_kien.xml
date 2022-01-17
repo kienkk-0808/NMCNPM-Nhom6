@@ -1,123 +1,174 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@drawable/bg_white_cornor_16"
-    android:orientation="vertical">
 
-    <TextView
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="444dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_yellow_cornor_16_top"
-        android:gravity="center"
-        android:padding="12dp"
-        android:text="Thêm/sửa sự kiện"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        android:textStyle="bold" />
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:background="@drawable/bg_white_cornor_16"
+        android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
-
-        <LinearLayout
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="4">
+            android:background="@drawable/bg_yellow_cornor_16_top"
+            android:gravity="center"
+            android:padding="12dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="Thêm sự kiện"
+            android:id="@+id/text_view_title"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Tên sự kiện:"
-                android:textSize="14sp" />
-
-            <EditText
-                android:id="@+id/edt_ten_su_kien"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_weight="3"
-                android:hint="Nhập tên sự kiện"
-                android:inputType="text" />
-
-        </LinearLayout>
-
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="4">
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@id/text_view_title"
+            android:padding="16dp">
 
-            <TextView
-                android:layout_width="0dp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Ngày tháng:"
-                android:textSize="14sp" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:id="@+id/linear_1"
+                android:orientation="horizontal"
+                android:weightSum="4">
 
-            <EditText
-                android:id="@+id/edt_ngay_thang"
-                android:layout_width="0dp"
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Tên sự kiện:"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/edt_ten_su_kien"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="3"
+                    android:hint="Nhập tên sự kiện"
+                    android:inputType="text" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                app:layout_constraintTop_toBottomOf="@id/linear_1"
+                android:id="@+id/linear_2"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_weight="3"
-                android:hint="Nhập ngày tháng"
-                android:inputType="text" />
+                android:orientation="horizontal"
+                android:weightSum="4">
 
-        </LinearLayout>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center_vertical"
+                    android:text="Ngày bắt đầu:"
+                    android:textSize="14sp" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="4">
+                <DatePicker
+                    android:id="@+id/datepicker_start_day"
+                    android:startYear="2022"
+                    android:endYear="2024"
+                    android:datePickerMode="spinner"
+                    android:calendarViewShown="false"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="3"/>
 
-            <TextView
-                android:layout_width="0dp"
+            </LinearLayout>
+
+            <LinearLayout
+                app:layout_constraintTop_toBottomOf="@id/linear_2"
+                android:id="@+id/linear_3"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Món tặng kèm:"
-                android:textSize="14sp" />
+                android:orientation="horizontal"
+                android:weightSum="4">
 
-            <EditText
-                android:id="@+id/edt_mon_tang_kem"
-                android:layout_width="0dp"
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:text="Ngày kết thúc:"
+                    android:textSize="14sp" />
+
+                <DatePicker
+                    android:id="@+id/datepicker_end_day"
+                    android:datePickerMode="spinner"
+                    android:startYear="2022"
+                    android:endYear="2024"
+                    android:calendarViewShown="false"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="3"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                app:layout_constraintTop_toBottomOf="@id/linear_3"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_weight="3"
-                android:hint="Nhập món tặng kèm"
-                android:inputType="text" />
+                app:layout_constraintBottom_toTopOf="@id/linear_last"
+                android:orientation="horizontal"
+                android:weightSum="4">
 
-        </LinearLayout>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Món tặng kèm:"
+                    android:textSize="14sp" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="4">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rcv_mon_tang_kem"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="3"/>
 
-            <Button
-                android:id="@+id/btn_huy_su_kien"
-                android:layout_width="wrap_content"
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear_last"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="5dp"
-                android:layout_weight="2"
-                android:text="Hủy" />
+                android:orientation="horizontal"
+                android:weightSum="4">
 
-            <Button
-                android:id="@+id/btn_them_su_kien"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_weight="2"
-                android:text="Xác nhận" />
+                <Button
+                    android:id="@+id/btn_huy_su_kien"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
+                    android:layout_weight="2"
+                    android:text="Hủy" />
 
-        </LinearLayout>
+                <Button
+                    android:id="@+id/btn_them_su_kien"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="2"
+                    android:text="Thêm" />
 
-    </LinearLayout>
+            </LinearLayout>
 
-</LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

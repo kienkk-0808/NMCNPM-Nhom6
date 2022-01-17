@@ -12,6 +12,23 @@
         android:layout_weight="8"
         android:orientation="vertical">
 
+
+        <TextView
+            android:id="@+id/text_view_trang_thai"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="3dp"
+            android:text="Đang diễn ra"
+            android:textColor="#00FF41"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/black"
+            android:paddingVertical="3dp"/>
+
         <TextView
             android:id="@+id/text_view_ten_su_kien"
             android:layout_width="wrap_content"
@@ -22,11 +39,19 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/text_view_ngay_su_kien"
+            android:id="@+id/text_view_ngay_bat_dau"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginVertical="3dp"
-            android:text="Ngày tháng"
+            android:text="Ngày bắt đầu"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/text_view_ngay_ket_thuc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="3dp"
+            android:text="Ngày kết thúc"
             android:textSize="14sp" />
 
         <TextView
@@ -34,7 +59,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginVertical="3dp"
-            android:text="Món tặng kèm"
+            android:text="Các món tặng kèm"
             android:textSize="14sp" />
 
     </LinearLayout>
@@ -45,6 +70,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="3dp"
         android:layout_weight="1"
+        android:layout_gravity="center_vertical"
         android:contentDescription="Sửa thông tin sự kiện"
         android:scaleType="centerCrop"
         android:src="@drawable/ic_edit" />
@@ -53,6 +79,7 @@
         android:id="@+id/image_button_xoa_su_kien"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
         android:layout_marginHorizontal="3dp"
         android:layout_weight="1"
         android:contentDescription="Xóa sự kiện"

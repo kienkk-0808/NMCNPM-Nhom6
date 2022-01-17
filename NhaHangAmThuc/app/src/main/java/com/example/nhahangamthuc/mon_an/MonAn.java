@@ -8,6 +8,15 @@ public class MonAn {
     private String tenmonan, kieumonan, url;
     private int soLuong;
     private Long giatien;
+    private boolean isChecked = false;
+
+    public boolean isChecked() {
+        return isChecked;
+    }
+
+    public void setChecked(boolean checked) {
+        isChecked = checked;
+    }
 
     public MonAn() {
     }
@@ -68,5 +77,18 @@ public class MonAn {
         map.put("giatien", giatien);
         map.put("url", url);
         return map;
+    }
+
+    @Override
+    public String toString() {
+        return "MonAn{" +
+                "id=" + id +
+                ", tenmonan='" + tenmonan + '\'' +
+                ", kieumonan='" + kieumonan + '\'' +
+                ", url='" + url + '\'' +
+                ", soLuong=" + soLuong +
+                ", giatien=" + giatien +
+                ", isChecked=" + isChecked +
+                '}';
     }
 }
