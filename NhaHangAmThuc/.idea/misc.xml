@@ -10,15 +10,23 @@
         <entry key="..\:/Git for NMCNPM/NhaHangAmThuc/app/src/main/res/layout/activity_nhan_vien.xml" value="0.25" />
         <entry key="..\:/Git for NMCNPM/NhaHangAmThuc/app/src/main/res/layout/activity_quan_ly.xml" value="0.25" />
         <entry key="..\:/Git for NMCNPM/NhaHangAmThuc/app/src/main/res/layout/fragment_ban_an.xml" value="0.25" />
+        <entry key="..\:/Git for NMCNPM/NhaHangAmThuc/app/src/main/res/layout/fragment_danh_sach_ban_an.xml" value="0.25" />
         <entry key="..\:/Git for NMCNPM/NhaHangAmThuc/app/src/main/res/layout/fragment_do_choi.xml" value="0.25" />
+        <entry key="..\:/Git for NMCNPM/NhaHangAmThuc/app/src/main/res/layout/fragment_ds_ban.xml" value="0.25" />
+        <entry key="..\:/Git for NMCNPM/NhaHangAmThuc/app/src/main/res/layout/fragment_ds_ban_trong.xml" value="0.25" />
         <entry key="..\:/Git for NMCNPM/NhaHangAmThuc/app/src/main/res/layout/fragment_goi_mon.xml" value="0.25" />
         <entry key="..\:/Git for NMCNPM/NhaHangAmThuc/app/src/main/res/layout/fragment_goi_mon_mang_ve.xml" value="0.25" />
         <entry key="..\:/Git for NMCNPM/NhaHangAmThuc/app/src/main/res/layout/fragment_hoi_vien.xml" value="0.25" />
+        <entry key="..\:/Git for NMCNPM/NhaHangAmThuc/app/src/main/res/layout/fragment_mon_an.xml" value="0.25" />
         <entry key="..\:/Git for NMCNPM/NhaHangAmThuc/app/src/main/res/layout/fragment_thong_ke.xml" value="0.25" />
         <entry key="..\:/Git for NMCNPM/NhaHangAmThuc/app/src/main/res/layout/item_chon_do_choi.xml" value="0.25" />
+        <entry key="..\:/Git for NMCNPM/NhaHangAmThuc/app/src/main/res/layout/item_crud_ban_an.xml" value="0.25" />
+        <entry key="..\:/Git for NMCNPM/NhaHangAmThuc/app/src/main/res/layout/item_dat_ban_info.xml" value="0.25" />
         <entry key="..\:/Git for NMCNPM/NhaHangAmThuc/app/src/main/res/layout/item_do_choi.xml" value="0.2359375" />
         <entry key="..\:/Git for NMCNPM/NhaHangAmThuc/app/src/main/res/layout/item_don_hang.xml" value="0.25" />
+        <entry key="..\:/Git for NMCNPM/NhaHangAmThuc/app/src/main/res/layout/item_hoi_vien.xml" value="0.25" />
         <entry key="..\:/Git for NMCNPM/NhaHangAmThuc/app/src/main/res/layout/item_mon_tang_kem.xml" value="0.25" />
+        <entry key="..\:/Git for NMCNPM/NhaHangAmThuc/app/src/main/res/layout/item_mon_trong_su_kien.xml" value="0.25" />
         <entry key="..\:/Git for NMCNPM/NhaHangAmThuc/app/src/main/res/layout/item_monan.xml" value="0.25" />
         <entry key="..\:/Git for NMCNPM/NhaHangAmThuc/app/src/main/res/layout/item_monan_chitietban.xml" value="0.25" />
         <entry key="..\:/Git for NMCNPM/NhaHangAmThuc/app/src/main/res/layout/item_monanmenu.xml" value="0.25" />
@@ -29,6 +37,7 @@
         <entry key="..\:/Git for NMCNPM/NhaHangAmThuc/app/src/main/res/layout/popup_dialog_do_choi_don_hang.xml" value="0.25" />
         <entry key="..\:/Git for NMCNPM/NhaHangAmThuc/app/src/main/res/layout/popup_dialog_don_hang.xml" value="0.25" />
         <entry key="..\:/Git for NMCNPM/NhaHangAmThuc/app/src/main/res/layout/popup_dialog_su_kien.xml" value="0.25" />
+        <entry key="..\:/Git for NMCNPM/NhaHangAmThuc/app/src/main/res/layout/popup_dialog_su_kien_goi_mon.xml" value="0.25" />
         <entry key="..\:/Git for NMCNPM/NhaHangAmThuc/app/src/main/res/menu/menu_nav.xml" value="0.25" />
         <entry key="..\:/Git for NMCNPM/NhaHangAmThuc/app/src/main/res/menu/menu_nav_quan_ly.xml" value="0.25" />
         <entry key="..\:/Learn/20211/CNPM/Project/NMCNPM-Nhom6/NhaHangAmThuc/app/src/main/res/drawable-v24/ic_favorite_border_white.xml" value="0.1125" />

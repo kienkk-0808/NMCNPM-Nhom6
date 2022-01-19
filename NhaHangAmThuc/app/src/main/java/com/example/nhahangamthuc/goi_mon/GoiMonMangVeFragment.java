@@ -7,7 +7,6 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,6 +34,7 @@ import com.example.nhahangamthuc.don_hang.DonHang;
 import com.example.nhahangamthuc.don_hang.DonHangAdapter;
 import com.example.nhahangamthuc.hoi_vien.HoiVien;
 import com.example.nhahangamthuc.mon_an.MonAn;
+import com.example.nhahangamthuc.su_kien.SuKien;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -53,10 +53,12 @@ public class GoiMonMangVeFragment extends Fragment {
     RecyclerView recyclerView2, recyclerView1;
     GoiMonAdapter adapter2, adapter1;
     Context context;
-    List<MonAn> monAnList, monDuocGoi, monNoiBat;
+    List<MonAn> monAnList, monDuocGoi, monNoiBat, monTrongSuKien;
+    List<String> tenCacMonSK;
     ProgressDialog progressDialog;
     DonHang donHang;
     List<DoChoi> doChoiDuocChon;
+    List<SuKien> suKienList, suKienDangCo;
     CheckBox checkBoxDoChoi, checkBoxHoiVien;
     HoiVien hoiVienDuocChon;
     Long tongTien = 0L;
@@ -89,6 +91,9 @@ public class GoiMonMangVeFragment extends Fragment {
         context = getContext();
         monAnList = new ArrayList<>();
         monDuocGoi = new ArrayList<>();
+        suKienList = new ArrayList<>();
+        tenCacMonSK = new ArrayList<>();
+        monTrongSuKien = new ArrayList<>();
         monNoiBat = new ArrayList<>();
         progressDialog = new ProgressDialog(context);
         progressDialog.setTitle("Loading...");
@@ -106,6 +111,10 @@ public class GoiMonMangVeFragment extends Fragment {
 
         view.findViewById(R.id.txv_don_hang).setOnClickListener(v -> {
             popupDonHang();
+        });
+
+        view.findViewById(R.id.button_su_kien).setOnClickListener(v -> {
+            popupSuKien();
         });
 
     }
@@ -196,15 +205,33 @@ public class GoiMonMangVeFragment extends Fragment {
             if (isChecked) popupHoiVien();
         });
 
+        List<DonHang> donHangList = new ArrayList<>();
+        donHang.setTongTien(tongTien);
+        LocalDate date = LocalDate.now();
+        donHang.setNgay(date.format(DateTimeFormatter.ofPattern("dd-MM-yyyy")));
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference reference = database.getReference("list_don_hang");
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                donHangList.clear();
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    DonHang donHang = dataSnapshot.getValue(DonHang.class);
+                    donHangList.add(donHang);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(context, "Đã xảy ra lỗi khi lấy danh sách đồ chơi!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
         dialog.show();
 
         dialog.findViewById(R.id.btn_them).setOnClickListener(v -> {
-            donHang.setTongTien(tongTien);
-            LocalDate date = LocalDate.now();
-            donHang.setNgay(date.format(DateTimeFormatter.ofPattern("dd-MM-yyyy")));
-            FirebaseDatabase database = FirebaseDatabase.getInstance();
-            DatabaseReference reference = database.getReference("list_don_hang");
-            reference.child(String.valueOf(new Random(99999))).setValue(donHang, (error, ref) -> {
+            String newId = String.valueOf(donHangList.size());
+            reference.child(newId).setValue(donHang, (error, ref) -> {
                 dialog.dismiss();
                 Toast.makeText(context, "Xuất hóa đơn thành công!", Toast.LENGTH_SHORT).show();
             });
@@ -330,6 +357,81 @@ public class GoiMonMangVeFragment extends Fragment {
             dialog.dismiss();
             tongTien = tinhTien(hoiVienDuocChon, tongTien);
             textViewTongTien.setText("Tổng tiên: " + tongTien + " VNĐ");
+        });
+
+        dialog.findViewById(R.id.btn_huy).setOnClickListener(v -> dialog.dismiss());
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private void popupSuKien() {
+        final Dialog dialog = new Dialog(context);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.popup_dialog_su_kien_goi_mon);
+        Window window = dialog.getWindow();
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        WindowManager.LayoutParams layoutParams = window.getAttributes();
+        layoutParams.gravity = Gravity.CENTER;
+        window.setAttributes(layoutParams);
+        dialog.setCancelable(true);
+
+        RecyclerView rcvMonTrongSK = dialog.findViewById(R.id.rcv_mon_trong_su_kien);
+        MonTrongSuKienAdapter adapter = new MonTrongSuKienAdapter(monTrongSuKien, donHang);
+        rcvMonTrongSK.setLayoutManager(new LinearLayoutManager(context));
+        rcvMonTrongSK.setAdapter(adapter);
+        DividerItemDecoration decoration = new DividerItemDecoration(context, DividerItemDecoration.VERTICAL);
+        rcvMonTrongSK.addItemDecoration(decoration);
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference reference = database.getReference("list_su_kien");
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                suKienList.clear();
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    SuKien suKien = dataSnapshot.getValue(SuKien.class);
+                    suKienList.add(suKien);
+                }
+                for(int i = 0; i < suKienList.size(); i++) {
+                    SuKien suKien = suKienList.get(i);
+                    LocalDate startDate = LocalDate.parse(suKien.getStartDate(), DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+                    LocalDate endDate = LocalDate.parse(suKien.getEndDate(), DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+                    LocalDate currentDate = LocalDate.now();
+                    suKienDangCo = new ArrayList<>();
+                    if (currentDate.isAfter(startDate) && currentDate.isBefore(endDate)) {
+                        suKienDangCo.add(suKien);
+                    }
+                    StringBuilder tenSK = new StringBuilder("Sự kiện đang diễn ra: ");
+                    int size = suKienDangCo.size();
+                    for (int j = 0; j < size; j++) {
+                        if (j == size - 1) tenSK.append(suKienDangCo.get(j).getTen());
+                        tenSK.append(suKienDangCo.get(j).getTen()).append(", ");
+                        List<String> tenCacMon = Arrays.asList(suKien.getMonTangKem().split(", "));
+                        tenCacMonSK.addAll(tenCacMon);
+                    }
+                    TextView tenSuKien = dialog.findViewById(R.id.txv_su_kien_dang_dien_ra);
+                    tenSuKien.setText(tenSK);
+
+                    for (int t = 0; t < monAnList.size(); t++) {
+                        MonAn monAn = monAnList.get(t);
+                        for (int k = 0; k < tenCacMonSK.size(); k++) {
+                            if (monAn.getTenmonan().equals(tenCacMonSK.get(k))) monTrongSuKien.add(monAn);
+                        }
+                    }
+                    adapter.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(context, "Đã xảy ra lỗi khi lấy danh sách sự kiện!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        dialog.show();
+
+        dialog.findViewById(R.id.btn_them).setOnClickListener(v -> {
+            dialog.dismiss();
         });
 
         dialog.findViewById(R.id.btn_huy).setOnClickListener(v -> dialog.dismiss());
