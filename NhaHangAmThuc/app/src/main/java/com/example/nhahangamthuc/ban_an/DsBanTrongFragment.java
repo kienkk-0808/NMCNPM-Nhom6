@@ -45,7 +45,7 @@ public class DsBanTrongFragment extends Fragment {
     private String ngay;
     private String gio;
     private Timestamp searchTime;
-    private ProgressDialog progressDialog;
+    //private ProgressDialog progressDialog;
 
     private DatabaseReference listBanRef = FirebaseDatabase.getInstance().
             getReference("list_ban_an");
@@ -71,7 +71,7 @@ public class DsBanTrongFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_ds_ban_trong, container, false);
         mapping(view);
         edtSearch.setText("");
-        progressDialog = new ProgressDialog(getContext());
+        //progressDialog = new ProgressDialog(getContext());
         banAnAdapter = new BanAnAdapter(getActivity());
         dsBanService = new DsBanService();
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 3);
@@ -90,7 +90,7 @@ public class DsBanTrongFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 listBan.clear();
                 listBanOld.clear();
-                progressDialog.show();
+                //progressDialog.show();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     BanAn banAn = dataSnapshot.getValue(BanAn.class);
                     listBan.add(banAn);
@@ -188,7 +188,7 @@ public class DsBanTrongFragment extends Fragment {
             if (banAn.getTrangThai() == 0)
                 listBan.add(banAn);
         banAnAdapter.notifyDataSetChanged();
-        progressDialog.dismiss();
+        //progressDialog.dismiss();
     }
 
     private void mapping(View view) {

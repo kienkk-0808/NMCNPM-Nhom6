@@ -67,6 +67,8 @@ public class DatBanController extends AppCompatActivity {
     }
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void xuLy(){
+        if (banAn == null)
+            return;
         tvIdBan.setText("ĐẶT BÀN " + banAn.getIdBan().toString());
 
         List<String> listNgay;

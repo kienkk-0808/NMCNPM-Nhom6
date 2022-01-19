@@ -58,7 +58,7 @@ public class DsBanFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_ds_ban, container, false);
         mapping(view);
         edtSearch.setText("");
-        progressDialog = new ProgressDialog(getContext());
+        //progressDialog = new ProgressDialog(getContext());
         banAnAdapter = new BanAnAdapter(getActivity());
         dsBanService = new DsBanService();
 
@@ -73,7 +73,7 @@ public class DsBanFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 listBan.clear();
-                progressDialog.show();
+               // progressDialog.show();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()){
                     BanAn banAn = dataSnapshot.getValue(BanAn.class);
                     listBan.add(banAn);
@@ -82,7 +82,7 @@ public class DsBanFragment extends Fragment {
                 dsBanService.setTrangThaiListBan(listBan,
                         new Timestamp(System.currentTimeMillis()));
                 banAnAdapter.notifyDataSetChanged();
-                progressDialog.dismiss();
+                //progressDialog.dismiss();
             }
 
             @Override

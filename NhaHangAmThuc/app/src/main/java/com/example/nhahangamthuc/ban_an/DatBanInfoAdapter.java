@@ -59,25 +59,19 @@ public class DatBanInfoAdapter extends RecyclerView.Adapter<DatBanInfoAdapter.My
         holder.tvSdt.setText(datBan.getSdt());
         holder.tvThoiGian.setText(datBan.getThoiGian());
         holder.tvSoNguoi.setText(datBan.getSoNguoi() + " Người");
-
-        Timestamp thoiGian = Timestamp.valueOf(datBan.getThoiGian());
-        Timestamp curTime = new Timestamp(System.currentTimeMillis());
-        Timestamp t2 = new Timestamp(0L);
-        t2.setTime(thoiGian.getTime() + dsBanService.millisPH / 2 + 1000);//t2 la sau 30p1s
-        if (dsBanService.checkTime(curTime, thoiGian, t2)) {
-            //trong thời gian đặt bàn
-            // Log.d("t", t2.toString());
-            holder.btnGoiMon.setVisibility(View.VISIBLE);
-        } else {
-            //Log.d("t",curTime.toString()+" "+ thoiGian.toString()+" "+ t2.toString());
-            holder.btnGoiMon.setVisibility(View.INVISIBLE);
-        }
-        holder.btnGoiMon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // chuyển đến activity gọi món, chuyển thông tin đặt bàn qua Intent
-            }
-        });
+//
+//        Timestamp thoiGian = Timestamp.valueOf(datBan.getThoiGian());
+//        Timestamp curTime = new Timestamp(System.currentTimeMillis());
+//        Timestamp t2 = new Timestamp(0L);
+//        t2.setTime(thoiGian.getTime() + dsBanService.millisPH / 2 + 1000);//t2 la sau 30p1s
+//        if (dsBanService.checkTime(curTime, thoiGian, t2)) {
+//            //trong thời gian đặt bàn
+//            // Log.d("t", t2.toString());
+//            holder.btnGoiMon.setVisibility(View.VISIBLE);
+//        } else {
+//            //Log.d("t",curTime.toString()+" "+ thoiGian.toString()+" "+ t2.toString());
+//            holder.btnGoiMon.setVisibility(View.INVISIBLE);
+//        }
         holder.imgbHuyDatBan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

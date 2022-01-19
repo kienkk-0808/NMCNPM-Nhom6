@@ -91,6 +91,8 @@ public class ChiTietBan extends AppCompatActivity {
     }
 
     private void xuly() {
+        if (banAn ==null)
+            return;
         tvIdBan.setText("BÀN " + banAn.getIdBan().toString());
 
         //xu ly: nguoi dang an - ds mon
@@ -99,8 +101,7 @@ public class ChiTietBan extends AppCompatActivity {
         tvDsMon.setText("");
         tvDangAn.setText("");
         if (banAn.getDangAn() != null) {
-            String tt = "Khách hàng:\n" + banAn.getDangAn().getTen() + " - " +
-                    banAn.getDangAn().getSdt() + "\n" + banAn.getDangAn().getThoiGian();
+            String tt = "Thời gian: " + banAn.getDangAn().getThoiGian();
             tvDangAn.setText(tt);
             if (banAn.getDanhSachMon() != null) {
                 tvDsMon.setText("Danh sách món ăn");

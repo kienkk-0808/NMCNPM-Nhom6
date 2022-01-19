@@ -141,13 +141,16 @@ public class BanAnFragment extends Fragment {
         dialog.findViewById(R.id.btn_pd_crudban_them).setOnClickListener(v -> {
             EditText editTextTen = dialog.findViewById(R.id.edt_pd_crudban_id);
             EditText editTextSoLuong = dialog.findViewById(R.id.edt_pd_crudban_songuoi);
-
-            BanAn banAn = new BanAn(Long.valueOf(editTextTen.getText().toString()),
-                    Integer.parseInt(editTextSoLuong.getText().toString()));
-            reference.child(String.valueOf(banAn.getIdBan())).setValue(banAn, (error, ref) -> {
-                dialog.dismiss();
-                Toast.makeText(context, "Thêm bàn thành công!", Toast.LENGTH_SHORT).show();
-            });
+            if (editTextSoLuong.getText().toString().length() < 1 || editTextTen.getText().toString().length() < 1) {
+                Toast.makeText(context, "Vui lòng nhập đủ thông tin!", Toast.LENGTH_SHORT).show();
+            } else {
+                BanAn banAn = new BanAn(Long.valueOf(editTextTen.getText().toString()),
+                        Integer.parseInt(editTextSoLuong.getText().toString()));
+                reference.child(String.valueOf(banAn.getIdBan())).setValue(banAn, (error, ref) -> {
+                    dialog.dismiss();
+                    Toast.makeText(context, "Thêm bàn thành công!", Toast.LENGTH_SHORT).show();
+                });
+            }
         });
 
         dialog.findViewById(R.id.btn_pd_crudban_huy).setOnClickListener(v -> dialog.dismiss());
@@ -175,14 +178,18 @@ public class BanAnFragment extends Fragment {
         btnSua.setText("Sửa");
         dialog.findViewById(R.id.btn_pd_crudban_them).setOnClickListener(v -> {
             String idBanstr = editTextTen.getText().toString();
+            if (editTextSoLuong.getText().toString().length() < 1 || editTextTen.getText().toString().length() < 1) {
+                Toast.makeText(context, "Vui lòng nhập đủ thông tin!", Toast.LENGTH_SHORT).show();
+            } else {
             banAn.setIdBan(Long.valueOf(idBanstr));
             banAn.setSoNguoi(Integer.parseInt(editTextSoLuong.getText().toString()));
-            reference.child(String.valueOf(banAn.getIdBan())).updateChildren(banAn.toMap(), (error, ref) -> {
-                dialog.dismiss();
-                if (!idBanstr.equals(idBanStrOld))
-                    reference.child(idBanStrOld).removeValue();
-                Toast.makeText(context, "Sửa thông tin bàn thành công!", Toast.LENGTH_SHORT).show();
-            });
+                reference.child(String.valueOf(banAn.getIdBan())).updateChildren(banAn.toMap(), (error, ref) -> {
+                    dialog.dismiss();
+                    if (!idBanstr.equals(idBanStrOld))
+                        reference.child(idBanStrOld).removeValue();
+                    Toast.makeText(context, "Sửa thông tin bàn thành công!", Toast.LENGTH_SHORT).show();
+                });
+            }
         });
 
         dialog.findViewById(R.id.btn_pd_crudban_huy).setOnClickListener(v -> dialog.dismiss());
