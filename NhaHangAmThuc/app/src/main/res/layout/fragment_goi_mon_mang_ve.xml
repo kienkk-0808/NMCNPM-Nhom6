@@ -1,14 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".mon_an.MonAnFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:text="Gọi món mang về"
+        android:padding="5dp"
+        android:id="@+id/title"/>
+
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Gọi món mang về" />
+        android:layout_height="wrap_content"
+        android:textStyle="italic"
+        android:text="Các món nổi bật"
+        android:padding="5dp"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        android:id="@+id/txv_cac_mon_noi_bat"
+        android:textSize="16sp"/>
 
-</FrameLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/txv_cac_mon_noi_bat"
+        app:layout_constraintBottom_toTopOf="@id/txv_don_hang"
+        android:orientation="vertical"
+        android:padding="5dp"
+        android:weightSum="15">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:padding="5dp"
+            android:layout_weight="6"
+            android:id="@+id/rcv_cac_mon_noi_bat"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:textStyle="italic"
+            android:layout_weight="1"
+            android:gravity="bottom"
+            android:text="Danh sách món ăn"
+            android:padding="5dp"
+            android:id="@+id/txv_danh_sach_mon_an"
+            android:textSize="16sp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="8"
+            android:id="@+id/rcv_goi_mon_mang_ve"
+            android:padding="5dp"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Đơn hàng"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:padding="5dp"
+        android:id="@+id/txv_don_hang"
+        android:background="@drawable/border_greybg"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

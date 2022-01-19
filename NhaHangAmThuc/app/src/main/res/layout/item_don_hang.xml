@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="5dp"
+    android:weightSum="7">
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Tên món"
+        android:id="@+id/txv_ten_mon"
+        android:textSize="13sp"
+        android:layout_weight="4"/>
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:id="@+id/txv_gia_tien"
+        android:layout_marginStart="20dp"
+        android:text="Giá tiền"
+        android:layout_weight="3"/>
+
+
+</LinearLayout>

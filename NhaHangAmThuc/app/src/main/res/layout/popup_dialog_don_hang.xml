@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_white_cornor_16">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:id="@+id/text_view_title"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:background="@drawable/bg_yellow_cornor_16_top"
+        android:text="Đơn hàng"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Các món đã gọi"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:padding="5dp"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:padding="5dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:background="@drawable/border_greybg"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:id="@+id/rcv_don_hang"/>
+
+                <CheckBox
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/checkbox_do_choi"
+                    android:text="Tặng kèm đồ chơi cho trẻ em"
+                    android:padding="5dp"
+                    android:gravity="start"
+                    app:layout_constraintTop_toBottomOf="@id/rcv_don_hang"/>
+
+                <CheckBox
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/checkbox_hoi_vien"
+                    android:text="Hội viên"
+                    android:padding="5dp"
+                    android:gravity="start"
+                    app:layout_constraintTop_toBottomOf="@id/checkbox_do_choi"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:id="@+id/view_divider"
+                    android:background="@color/black"
+                    app:layout_constraintTop_toBottomOf="@id/checkbox_hoi_vien"
+                    android:layout_margin="4dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/view_divider"
+                    android:text="Tổng tiền"
+                    android:id="@+id/txv_tong_tien"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:gravity="end"
+                    android:padding="5dp"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="8">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:id="@+id/btn_huy"
+                android:layout_marginEnd="5dp"
+                android:text="Hủy"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:id="@+id/btn_them"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_weight="5"
+                android:text="Xuất hóa đơn"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

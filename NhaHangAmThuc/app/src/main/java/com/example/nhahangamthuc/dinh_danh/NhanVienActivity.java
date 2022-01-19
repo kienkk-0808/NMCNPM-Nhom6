@@ -14,7 +14,7 @@ import android.view.MenuItem;
 
 import com.example.nhahangamthuc.R;
 import com.example.nhahangamthuc.fragment.DanhSachBanAnFragment;
-import com.example.nhahangamthuc.fragment.GoiMonMangVeFragment;
+import com.example.nhahangamthuc.goi_mon.GoiMonMangVeFragment;
 import com.example.nhahangamthuc.hoi_vien.HoiVienFragment;
 import com.google.android.material.navigation.NavigationView;
 

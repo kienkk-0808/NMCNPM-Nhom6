@@ -2,6 +2,7 @@ package com.example.nhahangamthuc.mon_an;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class MonAn {
     private Long id;
@@ -90,5 +91,18 @@ public class MonAn {
                 ", giatien=" + giatien +
                 ", isChecked=" + isChecked +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MonAn monAn = (MonAn) o;
+        return tenmonan.equals(monAn.tenmonan) && Objects.equals(giatien, monAn.giatien);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(tenmonan, giatien);
     }
 }
