@@ -193,7 +193,8 @@ public class DatBanController extends AppCompatActivity {
                     public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
                         Toast.makeText(DatBanController.this, "Đặt bàn thành công",
                                 Toast.LENGTH_LONG).show();
-                        //finish();
+
+                        finish();
                     }
                 });
     }

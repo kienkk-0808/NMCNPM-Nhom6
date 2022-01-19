@@ -50,7 +50,7 @@
         android:layout_marginHorizontal="3dp"
         android:id="@+id/image_button_xoa"
         android:layout_weight="1"
-        android:contentDescription="Xóa đồ chơi" />
+        android:contentDescription="Hủy đặt bàn" />
 
 
 </LinearLayout>
