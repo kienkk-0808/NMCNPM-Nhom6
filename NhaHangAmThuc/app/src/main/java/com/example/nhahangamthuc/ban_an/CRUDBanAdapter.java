@@ -41,7 +41,7 @@ public class CRUDBanAdapter extends RecyclerView.Adapter<CRUDBanAdapter.BanAnVie
         BanAn banAn = banAnList.get(position);
         if (banAn == null) return;
         holder.tvIdBan.setText("Bàn: " + banAn.getIdBan().toString());
-        holder.tvSoNguoi.setText("Số lượng: " + banAn.getSoNguoi());
+        holder.tvSoNguoi.setText("Số người: " + banAn.getSoNguoi());
         holder.imgbSua.setOnClickListener(v -> {
             iItemClick.onUpdateClick(banAn);
         });

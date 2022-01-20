@@ -67,6 +67,8 @@ public class DatBanController extends AppCompatActivity {
     }
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void xuLy(){
+        if (banAn == null)
+            return;
         tvIdBan.setText("ĐẶT BÀN " + banAn.getIdBan().toString());
 
         List<String> listNgay;
@@ -193,7 +195,8 @@ public class DatBanController extends AppCompatActivity {
                     public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
                         Toast.makeText(DatBanController.this, "Đặt bàn thành công",
                                 Toast.LENGTH_LONG).show();
-                        //finish();
+
+                        finish();
                     }
                 });
     }

@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ChiTietBan extends AppCompatActivity {
-    private BanAn banAn, ban;
+    private BanAn banAn;
     private Button btnDatBan;
     private Button btnThanhToan;
     private Button btnGoiMon;
@@ -56,7 +56,7 @@ public class ChiTietBan extends AppCompatActivity {
 
         //set recycle view ds dat ban
         listDatBan = new ArrayList<>();
-        datBanInfoAdapter = new DatBanInfoAdapter(this);
+        datBanInfoAdapter = new DatBanInfoAdapter(this, Long.valueOf(idBanStr));
         datBanInfoAdapter.setData(listDatBan);
         rcvDsDatBan.setLayoutManager(new LinearLayoutManager(this));
         rcvDsDatBan.setAdapter(datBanInfoAdapter);
@@ -67,6 +67,7 @@ public class ChiTietBan extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 banAn = snapshot.getValue(BanAn.class);
                 xuly();
+                datBanInfoAdapter.notifyDataSetChanged();
             }
 
             @Override
@@ -90,6 +91,8 @@ public class ChiTietBan extends AppCompatActivity {
     }
 
     private void xuly() {
+        if (banAn ==null)
+            return;
         tvIdBan.setText("BÀN " + banAn.getIdBan().toString());
 
         //xu ly: nguoi dang an - ds mon
@@ -98,8 +101,7 @@ public class ChiTietBan extends AppCompatActivity {
         tvDsMon.setText("");
         tvDangAn.setText("");
         if (banAn.getDangAn() != null) {
-            String tt = "Khách hàng:\n" + banAn.getDangAn().getTen() + " - " +
-                    banAn.getDangAn().getSdt() + "\n" + banAn.getDangAn().getThoiGian();
+            String tt = "Thời gian: " + banAn.getDangAn().getThoiGian();
             tvDangAn.setText(tt);
             if (banAn.getDanhSachMon() != null) {
                 tvDsMon.setText("Danh sách món ăn");
@@ -118,48 +120,6 @@ public class ChiTietBan extends AppCompatActivity {
             updateDatBanInfo();
             setListDatBan(banAn.getDanhSachDat());
         }
-//        btnGoiMon.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                listBanRef.child("101").addValueEventListener(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                        ban = snapshot.getValue(BanAn.class);
-//                        List<MonAn> listMon = new ArrayList<>();
-//                        DatabaseReference listMonRef = FirebaseDatabase.getInstance().
-//                                getReference("Danh_sach_mon_an");
-//                        listMonRef.addValueEventListener(new ValueEventListener() {
-//                            @Override
-//                            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-//                                    MonAn monAn = dataSnapshot.getValue(MonAn.class);
-//                                    monAn.setSoLuong(5);
-//                                    listMon.add(monAn);
-//                                }
-//                                ban.setDanhSachMon(listMon);
-//                                ban.setDangAn(ban.getDanhSachDat().get(0));
-//                                listBanRef.child("101").setValue(ban);
-//                            }
-//
-//
-//                        @Override
-//                        public void onCancelled (@NonNull DatabaseError error){
-//
-//                        }
-//                    });
-//
-//
-//                }
-//
-//                @Override
-//                public void onCancelled (@NonNull DatabaseError error){
-//
-//                }
-//            });
-//
-//        }
-//    });
     }
 
     private void updateDatBanInfo() {

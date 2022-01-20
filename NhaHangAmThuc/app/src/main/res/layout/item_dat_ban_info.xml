@@ -44,11 +44,12 @@
         android:id="@+id/btn_item_dat_ban_goimon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:text="Gọi món"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imgb_huy_dat_ban" />
 
     <TextView
         android:id="@+id/tv_item_dat_ban_songuoi"
@@ -60,4 +61,13 @@
         android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@+id/tv_item_dat_ban_sdt"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/imgb_huy_dat_ban"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_delete" />
 </androidx.constraintlayout.widget.ConstraintLayout>
