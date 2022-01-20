@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nhahangamthuc.R;
+import com.example.nhahangamthuc.goi_mon.GoiMonActivity;
 import com.example.nhahangamthuc.mon_an.MonAn;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -27,7 +28,6 @@ import java.util.List;
 public class ChiTietBan extends AppCompatActivity {
     private BanAn banAn;
     private Button btnDatBan;
-    private Button btnThanhToan;
     private Button btnGoiMon;
     private TextView tvIdBan, tvDsMon, tvDangAn;
     private RecyclerView rcvDsMon, rcvDsDatBan;
@@ -82,12 +82,11 @@ public class ChiTietBan extends AppCompatActivity {
                 lauchDatBanView();
             }
         });
-//        btnGoiMon.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                // nhập thông tin khách hàng (tên, sđt, số người) và chuyển qua activity gọi món
-//            }
-//        });
+        btnGoiMon.setOnClickListener(v -> {
+            Intent intent1 = new Intent(this, GoiMonActivity.class);
+            intent1.putExtra("id ban", String.valueOf(banAn.getIdBan()));
+            startActivity(intent1);
+        });
     }
 
     private void xuly() {
@@ -155,7 +154,6 @@ public class ChiTietBan extends AppCompatActivity {
 
     private void mapping() {
         btnDatBan = (Button) findViewById(R.id.btn_dat_ban);
-        btnThanhToan = (Button) findViewById(R.id.btn_thanh_toan);
         btnGoiMon = (Button) findViewById(R.id.btn_goi_mon);
         tvIdBan = (TextView) findViewById(R.id.tv_id_ban);
         tvDsMon = (TextView) findViewById(R.id.tv_dsmon);

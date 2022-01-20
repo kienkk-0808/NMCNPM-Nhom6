@@ -1,5 +1,12 @@
 package com.example.nhahangamthuc.goi_mon;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -8,9 +15,6 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
@@ -18,14 +22,6 @@ import android.widget.AutoCompleteTextView;
 import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nhahangamthuc.R;
 import com.example.nhahangamthuc.do_choi.DoChoi;
@@ -47,7 +43,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class GoiMonMangVeFragment extends Fragment {
+public class GoiMonActivity extends AppCompatActivity {
 
     RecyclerView recyclerView2, recyclerView1;
     GoiMonAdapter adapter2, adapter1;
@@ -63,31 +59,13 @@ public class GoiMonMangVeFragment extends Fragment {
     Long tongTien = 0L;
     TextView textViewTongTien;
 
-    public GoiMonMangVeFragment() {
-        // Required empty public constructor
-    }
-
-    public static GoiMonMangVeFragment newInstance() {
-        return new GoiMonMangVeFragment();
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_goi_mon_mang_ve, container, false);
-    }
-
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_goi_mon);
 
-        context = getContext();
+        context = this;
         monAnList = new ArrayList<>();
         monDuocGoi = new ArrayList<>();
         suKienList = new ArrayList<>();
@@ -100,22 +78,25 @@ public class GoiMonMangVeFragment extends Fragment {
         adapter1 = new GoiMonAdapter(monNoiBat, donHang);
         adapter2 = new GoiMonAdapter(monAnList, donHang);
 
-        recyclerView1 = view.findViewById(R.id.rcv_cac_mon_noi_bat);
+        recyclerView1 = findViewById(R.id.rcv_cac_mon_noi_bat);
         recyclerView1.setLayoutManager(new LinearLayoutManager(context));
         recyclerView1.setAdapter(adapter1);
-        recyclerView2 = view.findViewById(R.id.rcv_goi_mon_mang_ve);
+        recyclerView2 = findViewById(R.id.rcv_goi_mon_mang_ve);
         recyclerView2.setLayoutManager(new LinearLayoutManager(context));
         recyclerView2.setAdapter(adapter2);
         setData();
 
-        view.findViewById(R.id.txv_don_hang).setOnClickListener(v -> {
+        String tenBan = getIntent().getStringExtra("id ban");
+        TextView title = findViewById(R.id.title);
+        title.setText("Gọi món bàn " + tenBan);
+
+        findViewById(R.id.txv_don_hang).setOnClickListener(v -> {
             popupDonHang();
         });
 
-        view.findViewById(R.id.button_su_kien).setOnClickListener(v -> {
+        findViewById(R.id.button_su_kien).setOnClickListener(v -> {
             popupSuKien();
         });
-
     }
 
     private void setData() {
@@ -352,7 +333,7 @@ public class GoiMonMangVeFragment extends Fragment {
                     hoiVienDuocChon = hoiVien3;
             }
             checkBoxHoiVien.setText("Hội viên: " + hoiVienDuocChon.getTen() + "\n" + "Số điện thoại: "
-            +hoiVienDuocChon.getSoDienThoai());
+                    +hoiVienDuocChon.getSoDienThoai());
             dialog.dismiss();
             tongTien = tinhTien(hoiVienDuocChon, tongTien);
             textViewTongTien.setText("Tổng tiên: " + tongTien + " VNĐ");

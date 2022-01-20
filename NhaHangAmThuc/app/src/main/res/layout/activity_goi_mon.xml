@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".goi_mon.GoiMonActivity">
+
+    <Button
+        android:layout_marginHorizontal="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        android:id="@+id/button_su_kien"
+        android:text="Xem sự kiện đặc biệt"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:text="Gọi món mang về"
+        android:padding="5dp"
+        android:id="@+id/title"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="italic"
+        android:text="Các món nổi bật"
+        android:padding="5dp"
+        app:layout_constraintTop_toBottomOf="@id/button_su_kien"
+        android:id="@+id/txv_cac_mon_noi_bat"
+        android:textSize="16sp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/txv_cac_mon_noi_bat"
+        app:layout_constraintBottom_toTopOf="@id/txv_don_hang"
+        android:orientation="vertical"
+        android:padding="5dp"
+        android:weightSum="27">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:padding="5dp"
+            android:layout_weight="11"
+            android:id="@+id/rcv_cac_mon_noi_bat"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:textStyle="italic"
+            android:layout_weight="2"
+            android:gravity="bottom"
+            android:text="Danh sách món ăn"
+            android:padding="5dp"
+            android:id="@+id/txv_danh_sach_mon_an"
+            android:textSize="16sp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="14"
+            android:id="@+id/rcv_goi_mon_mang_ve"
+            android:padding="5dp"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Đơn hàng"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:padding="5dp"
+        android:id="@+id/txv_don_hang"
+        android:background="@drawable/border_greybg"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

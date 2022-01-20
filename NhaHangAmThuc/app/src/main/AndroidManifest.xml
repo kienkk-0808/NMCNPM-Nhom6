@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NhaHangAmThuc">
         <activity
+            android:name=".goi_mon.GoiMonActivity"
+            android:exported="false" />
+        <activity
             android:name=".mon_an.AddMonAn"
             android:exported="false"
             android:label="Thêm món ăn" />

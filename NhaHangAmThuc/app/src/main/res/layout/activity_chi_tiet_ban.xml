@@ -45,14 +45,6 @@ android:layout_height="fill_parent">
                 android:text="ĐẶT BÀN" />
 
             <Button
-                android:id="@+id/btn_thanh_toan"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_weight="1"
-                android:text="THANH TOÁN" />
-
-            <Button
                 android:id="@+id/btn_goi_mon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

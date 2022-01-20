@@ -17,7 +17,7 @@ import com.example.nhahangamthuc.ban_an.BanAnFragment;
 import com.example.nhahangamthuc.do_choi.DoChoiFragment;
 import com.example.nhahangamthuc.mon_an.MonAnFragment;
 import com.example.nhahangamthuc.su_kien.SuKienFragment;
-import com.example.nhahangamthuc.fragment.ThongKeFragment;
+import com.example.nhahangamthuc.thong_ke.ThongKeFragment;
 import com.google.android.material.navigation.NavigationView;
 
 public class QuanLyActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
