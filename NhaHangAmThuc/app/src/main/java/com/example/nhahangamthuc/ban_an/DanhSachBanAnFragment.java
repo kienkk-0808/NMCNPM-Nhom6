@@ -1,4 +1,4 @@
-package com.example.nhahangamthuc.fragment;
+package com.example.nhahangamthuc.ban_an;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,7 +11,6 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.nhahangamthuc.R;
-import com.example.nhahangamthuc.ban_an.ViewPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
